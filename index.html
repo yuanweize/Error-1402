@@ -5,249 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Error 1402 - EURUN CDN</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;
-            color: #404040;
-            line-height: 1.5;
-            min-height: 100vh;
-            background: #f8f9fa;
-            -webkit-font-smoothing: antialiased
-        }
-
-        .container {
-            max-width: 60rem;
-            margin: 0 auto;
-            padding: 0 2rem
-        }
-
-        .header {
-            margin-bottom: 2rem;
-            padding: 1.5rem 0
-        }
-
-        .error-title {
-            display: flex;
-            align-items: baseline;
-            gap: 2rem;
-            margin-bottom: 1rem
-        }
-
-        .error-code {
-            font-size: 4.5rem;
-            font-weight: 200;
-            color: #404040;
-            margin: 0;
-            letter-spacing: -0.02em
-        }
-
-        .ray-info {
-            font-family: monaco, courier, monospace;
-            font-size: 0.9rem;
-            color: #999;
-            font-weight: 400;
-            margin-top: 0.5rem;
-            letter-spacing: 0.025em
-        }
-
-        .ray-id {
-            cursor: pointer;
-            transition: color 0.2s
-        }
-
-        .ray-id:hover {
-            color: #0051c3
-        }
-
-        .error-description {
-            font-size: 1.125rem;
-            color: #666;
-            font-weight: 400;
-            margin: 0;
-            line-height: 1.6;
-            max-width: 600px;
-            opacity: 0.9
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem
-        }
-
-        .section h2 {
-            font-size: 1.875rem;
-            font-weight: 400;
-            color: #404040;
-            margin-bottom: 1rem
-        }
-
-        .section p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #6b7280;
-            margin-bottom: 0.75rem
-        }
-
-        .section strong {
-            font-weight: 600;
-            color: #404040
-        }
-
-        .ip-section {
-            background: #fff;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem
-        }
-
-        .ip-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem
-        }
-
-        .ip-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            background: #0051c3;
-            border-radius: 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.75rem
-        }
-
-        .ip-title {
-            font-weight: 600;
-            color: #404040
-        }
-
-        .ip-sources {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap
-        }
-
-        .ip-source {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 0.25rem;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.2s
-        }
-
-        .ip-source.success {
-            background: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724
-        }
-
-        .ip-source.error {
-            background: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24
-        }
-
-        .footer {
-            text-align: center;
-            color: #999;
-            font-size: 0.8125rem;
-            border-top: 1px solid #e9ecef;
-            padding-top: 2rem;
-            margin-top: 2rem
-        }
-
-        .footer-line {
-            margin-bottom: 0.5rem
-        }
-
-        .footer strong {
-            color: #404040;
-            font-weight: 600
-        }
-
-        .footer a {
-            color: #0051c3;
-            text-decoration: none;
-            transition: color 0.15s ease
-        }
-
-        .footer a:hover {
-            color: #ee730a
-        }
-
-        .loading {
-            display: inline-block;
-            width: 0.75rem;
-            height: 0.75rem;
-            border: 2px solid #e9ecef;
-            border-top: 2px solid #0051c3;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 0.5rem
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg)
-            }
-
-            100% {
-                transform: rotate(360deg)
-            }
-        }
-
-        /* Language selector */
-        .lang-select {
-            position: fixed;
-            top: 12px;
-            right: 16px;
-            background: #fff;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.85rem;
-            color: #404040;
-        }
-
-        @media (max-width:768px) {
-            .error-code {
-                font-size: 3.5rem
-            }
-
-            .error-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem
-            }
-
-            .ray-info {
-                margin-top: 0
-            }
-
-            .content {
-                grid-template-columns: 1fr;
-                gap: 2rem
-            }
-
-            .container {
-                padding: 0 1rem
-            }
-        }
-    </style>
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:#404040;line-height:1.5;min-height:100vh;background:#f8f9fa;-webkit-font-smoothing:antialiased}.container{max-width:60rem;margin:0 auto;padding:0 2rem}.header{margin-bottom:2rem;padding:1.5rem 0}.error-title{display:flex;align-items:baseline;gap:2rem;margin-bottom:1rem}.error-code{font-size:4.5rem;font-weight:200;color:#404040;margin:0;letter-spacing:-0.02em}.ray-info{font-family:monaco,courier,monospace;font-size:.9rem;color:#999;font-weight:400;margin-top:.5rem;letter-spacing:.025em}.ray-id{cursor:pointer;transition:color .2s}.ray-id:hover{color:#0051c3}.error-description{font-size:1.125rem;color:#666;font-weight:400;margin:0;line-height:1.6;max-width:600px;opacity:.9}.content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem}.section h2{font-size:1.875rem;font-weight:400;color:#404040;margin-bottom:1rem}.section p{font-size:.95rem;line-height:1.5;color:#6b7280;margin-bottom:.75rem}.section strong{font-weight:600;color:#404040}.ip-section{background:#fff;border-radius:.5rem;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:2rem}.ip-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}.ip-icon{width:1.25rem;height:1.25rem;background:#0051c3;border-radius:.25rem;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem}.ip-title{font-weight:600;color:#404040}.ip-sources{display:flex;gap:.5rem;flex-wrap:wrap}.ip-source{background:#f8f9fa;border:1px solid #e9ecef;border-radius:.25rem;padding:.5rem .75rem;font-size:.75rem;font-weight:600;transition:all .2s}.ip-source.success{background:#d4edda;border-color:#c3e6cb;color:#155724}.ip-source.error{background:#f8d7da;border-color:#f5c6cb;color:#721c24}.footer{text-align:center;color:#999;font-size:.8125rem;border-top:1px solid #e9ecef;padding-top:2rem;margin-top:2rem}.footer-line{margin-bottom:.5rem}.footer strong{color:#404040;font-weight:600}.footer a{color:#0051c3;text-decoration:none;transition:color .15s ease}.footer a:hover{color:#ee730a}.loading{display:inline-block;width:.75rem;height:.75rem;border:2px solid #e9ecef;border-top:2px solid #0051c3;border-radius:50%;animation:spin 1s linear infinite;margin-right:.5rem}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.lang-select{position:fixed;top:12px;right:16px;background:#fff;border:1px solid #e9ecef;border-radius:6px;padding:.25rem .5rem;font-size:.85rem;color:#404040}@media (max-width:768px){.error-code{font-size:3.5rem}.error-title{flex-direction:column;align-items:flex-start;gap:.5rem}.ray-info{margin-top:0}.content{grid-template-columns:1fr;gap:2rem}.container{padding:0 1rem}}</style>
 </head>
 
 <body>
@@ -318,6 +76,15 @@
         const rtlLangs = new Set(['ar', 'he', 'fa', 'ur']);
 
         const i18nCache = new Map();
+        // Remote bases for language packs (mirrors). Order matters.
+        const LANG_BASES = [
+            'https://raw.githubusercontent.com/yuanweize/Error-1402/main/assets/i18n/',
+            'https://cdn.jsdelivr.net/gh/yuanweize/Error-1402@main/assets/i18n/'
+        ];
+        // Simple persistent cache in localStorage
+        const I18N_LS_VERSION = 'v1';
+        const I18N_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+        const lsKey = (code) => `i18n:${code}:${I18N_LS_VERSION}`;
 
         // Central i18n map (key -> selector + mode). Reused for baseline capture and DOM updates.
         const I18N_MAP = [
@@ -363,19 +130,32 @@
         }
 
         async function loadLangJson(code) {
-            // Never fetch English (use DOM baseline instead)
-            if (code === 'en') return null;
+            if (code === 'en') return null; // English uses DOM baseline
             if (i18nCache.has(code)) return i18nCache.get(code);
+            // Try localStorage (TTL)
             try {
-                const res = await fetchWithTimeout(`assets/i18n/${code}.json`);
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                const json = await res.json();
-                i18nCache.set(code, json);
-                return json;
-            } catch (e) {
-                i18nCache.set(code, null);
-                return null;
+                const raw = localStorage.getItem(lsKey(code));
+                if (raw) {
+                    const obj = JSON.parse(raw);
+                    if (obj && obj.t && (Date.now() - obj.t) < I18N_CACHE_TTL && obj.data) {
+                        i18nCache.set(code, obj.data);
+                        return obj.data;
+                    }
+                }
+            } catch {}
+            // Fetch from mirrors
+            for (const base of LANG_BASES) {
+                try {
+                    const res = await fetchWithTimeout(`${base}${code}.json`);
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    const json = await res.json();
+                    i18nCache.set(code, json);
+                    try { localStorage.setItem(lsKey(code), JSON.stringify({ t: Date.now(), data: json })); } catch {}
+                    return json;
+                } catch {}
             }
+            i18nCache.set(code, null);
+            return null;
         }
 
         async function getStrings(code) {
