@@ -302,6 +302,8 @@
         </div>
     </div>
     <script>
+        // Optional debug banner for i18n when using ?debug=i18n
+        const DEBUG_I18N = new URLSearchParams(window.location.search).get('debug') === 'i18n';
         // Lazy-loaded i18n: language JSON files under assets/i18n/<code>.json
         const languageMeta = {
             en: 'English', zh: '中文', es: 'Español', fr: 'Français', de: 'Deutsch',
@@ -387,10 +389,9 @@
             const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])
                 .filter(Boolean)
                 .map(s => s.toLowerCase());
-            // exact
-            for (const tag of prefs) if (supportedCodes.includes(tag)) return tag;
-            // base
+            // For each preferred tag, try exact first, then its base before moving to the next
             for (const tag of prefs) {
+                if (supportedCodes.includes(tag)) return tag;
                 const base = tag.split('-')[0];
                 if (supportedCodes.includes(base)) return base;
             }
@@ -399,12 +400,21 @@
 
         function getDefaultLang() {
             const saved = localStorage.getItem('lang');
-            if (saved && supportedCodes.includes(saved)) return saved;
+            const pinned = localStorage.getItem('langPinned') === '1';
+            // Only honor saved language if user explicitly pinned it (selected via UI)
+            if (pinned && saved && supportedCodes.includes(saved)) return saved;
             const nav = resolveLangFromNavigator();
             return supportedCodes.includes(nav) ? nav : 'en';
         }
 
         let currentLang = getDefaultLang();
+        if (DEBUG_I18N) {
+            console.info('[i18n] navigator.language =', navigator.language);
+            console.info('[i18n] navigator.languages =', navigator.languages);
+            console.info('[i18n] resolved =', resolveLangFromNavigator());
+            console.info('[i18n] saved/langPinned =', localStorage.getItem('lang'), localStorage.getItem('langPinned'));
+            console.info('[i18n] initial currentLang =', currentLang);
+        }
         let currentStrings = {};
 
         function t(key) {
@@ -441,6 +451,23 @@
             const loadingEl = document.getElementById('lang-loading');
             if (loadingEl) loadingEl.style.display = 'inline';
             currentStrings = await getStrings(currentLang);
+            if (DEBUG_I18N) {
+                console.info('[i18n] apply lang =', currentLang, 'loaded pack =', currentStrings ? 'yes' : 'no');
+                // Small floating debug panel
+                let dbg = document.getElementById('i18n-debug');
+                if (!dbg) {
+                    dbg = document.createElement('div');
+                    dbg.id = 'i18n-debug';
+                    dbg.style.cssText = 'position:fixed;left:12px;top:12px;background:#fff;border:1px solid #e9ecef;border-radius:6px;padding:8px 10px;font-size:12px;color:#333;box-shadow:0 1px 3px rgba(0,0,0,.1);z-index:9999;max-width:320px;';
+                    document.body.appendChild(dbg);
+                }
+                dbg.innerHTML = '<strong>i18n debug</strong><br>' +
+                    'navigator.language: ' + (navigator.language || '') + '<br>' +
+                    'navigator.languages: ' + (navigator.languages || []).join(', ') + '<br>' +
+                    'resolved: ' + resolveLangFromNavigator() + '<br>' +
+                    'currentLang: ' + currentLang + '<br>' +
+                    'pack loaded: ' + (currentStrings ? 'yes' : 'no');
+            }
             document.documentElement.lang = currentLang;
             document.documentElement.dir = rtlLangs.has(currentLang) ? 'rtl' : 'ltr';
             document.title = t('title');
@@ -550,6 +577,7 @@
         langSelect.addEventListener('change', (e) => {
             currentLang = e.target.value;
             localStorage.setItem('lang', currentLang);
+            localStorage.setItem('langPinned', '1');
             applyI18nAsync();
         });
         applyI18nAsync();

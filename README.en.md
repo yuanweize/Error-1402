@@ -259,11 +259,11 @@ Edit `index.html` directly:
 
 - The top-right selector now offers 30+ common languages. Language packs are lazy-loaded from external JSON files: `assets/i18n/<code>.json`.
 - Auto-detection priority:
-  1. `localStorage.lang` (if set)
-  2. Exact match against browser languages (e.g., `pt-BR`, `en-GB`)
-  3. Base prefix match (e.g., `pt-BR` → `pt`)
-  4. Fallback to `en`
-- Loading and fallback chain: content is merged from “exact → base → English” so missing keys gracefully fall back to upper levels.
+  1. User-pinned language (`localStorage.lang` honored only when `localStorage.langPinned=1`, to avoid accidental lock-in)
+  2. Iterate your browser language list in order; for each tag try exact first, then its base prefix (e.g., `zh-CN` → `zh`), then move to the next tag
+  3. If still not found, fallback to `en`
+- Loading and fallback chain: content is merged from “exact → base → built-in English baseline”, so missing keys gracefully fall back to upper levels.
+- English (en) is no longer fetched from `assets/i18n/en.json`; instead, the page's DOM content serves as the English baseline. Only non-English packs are fetched on demand.
 - Built-in languages (code → native name, partial list):
   - `en` English, `zh` 中文, `es` Español, `fr` Français, `de` Deutsch, `ja` 日本語, `ko` 한국어, `ru` Русский, `ar` العربية, `pt` Português, `it` Italiano, `nl` Nederlands, `sv` Svenska, `no` Norsk, `pl` Polski, `tr` Türkçe, `hi` हिन्दी, `th` ไทย, `vi` Tiếng Việt, `id` Bahasa Indonesia, `he` עברית, `uk` Українська, `cs` Čeština, `ro` Română, `el` Ελληνικά, `hu` Magyar, `da` Dansk, `fi` Suomi, `bg` Български, `sk` Slovenčina, `ca` Català, `ms` Bahasa Melayu, `fil` Filipino.
 - RTL support: selecting `ar` or `he` sets `dir="rtl"`; others use `ltr`.
@@ -277,7 +277,7 @@ Edit `index.html` directly:
 #### What is “lazy-loading” here?
 
 - To reduce initial JS payload, the page fetches `assets/i18n/<code>.json` only when needed and caches it in memory.
-- If a language file is missing or fails to load, the merge fallback ensures content remains available using English/base strings.
+- If a language file is missing or fails to load, the merge fallback keeps the page usable by falling back to the built-in English baseline.
 - Deployment notes:
   - Due to browser security, opening via `file://` may block `fetch()` for JSON. Serve over a local HTTP server during development.
   - Consider caching headers for `assets/i18n/*.json`: `Cache-Control: public, max-age=86400, immutable` to avoid repeated downloads.
@@ -285,10 +285,19 @@ Edit `index.html` directly:
 
 #### Adding a new language
 
-1. Copy `assets/i18n/en.json` to `assets/i18n/<code>.json` and translate all keys.
+1. Copy any existing language (e.g., `zh.json`) to `assets/i18n/<code>.json` and translate all keys.
 2. Add `<code>: 'Native Name'` to `languageMeta` in `index.html` so it appears in the selector.
 3. If needed, set a custom `"sep"` in the JSON (e.g., `：`).
 4. For new UI sections, add `data-i18n="key"` to elements and provide keys in each language JSON.
+
+#### Debugging & troubleshooting
+
+- Append `?debug=i18n` to the URL to show a small debug panel with: `navigator.language`, `navigator.languages`, the resolved language, final `currentLang`, and whether the language pack was loaded.
+- If the first visit (with cleared localStorage) still shows an unexpected language:
+  - Ensure you are not opening the file via `file://` (browsers may block `fetch()` for JSON); serve over HTTP instead.
+  - Use `?debug=i18n` to inspect your browser language order.
+  - Detection is now fixed to evaluate languages one-by-one (exact → base) before considering later entries, so `zh-CN` correctly falls back to `zh` instead of a later `en` entry.
+  - When you manually select a language, the page sets `langPinned=1` and will honor your choice on subsequent visits.
 
 
 ## Privacy & compliance
