@@ -261,7 +261,7 @@ example.com {
 
 ### 多语言与懒加载（i18n）
 
-- 页面右上角提供语言选择器，现已内置 30+ 常用语言，语言包采用“按需加载”的外部 JSON 文件：`assets/i18n/<code>.json`。
+- 页面右上角提供语言选择器，现已内置 30+ 常用语言，语言包采用“按需加载”的外部 JSON 文件（远程获取）。
 - 默认语言自动检测优先级：
 	1. 用户明确选择的语言（`localStorage.lang`，仅当 `localStorage.langPinned=1` 时才生效，避免误固定）；
 	2. 逐项解析浏览器语言列表：对每一项先尝试“精确匹配”，若无则尝试其“基础前缀匹配”（例如 `zh-CN` → `zh`），再继续下一项；
@@ -278,9 +278,22 @@ example.com {
 	- `what_can_i_do`, `what_can_i_do_p1`, `what_can_i_do_p2`
 	- `footer_line1`, `footer_line2`, `sep`
 
+#### 远程加载与缓存（重要）
+
+- 远程源（按顺序回退）：
+	- GitHub Raw：`https://raw.githubusercontent.com/yuanweize/Error-1402/main/assets/i18n/<code>.json`
+	- jsDelivr：`https://cdn.jsdelivr.net/gh/yuanweize/Error-1402@main/assets/i18n/<code>.json`
+- 单文件部署：默认远程加载非英文语言包，生产只需部署一个 `index.html` 即可，无需携带 `assets/` 目录。
+- 缓存策略：
+	- 内存缓存（页面生命周期内）+ localStorage 持久缓存（TTL 7 天），过期自动刷新；
+	- 可通过提升脚本常量 `I18N_LS_VERSION` 来强制失效旧缓存；
+	- 也可手动清理：`localStorage.removeItem('i18n:<code>:v1')`。
+- 加载提示：语言包加载期间，右上角会显示 `Loading…` 轻提示。
+- 自定义镜像：如需替换远程源，修改脚本常量 `LANG_BASES` 即可（按顺序回退）。
+
 #### 什么是“懒加载”语言包？
 
-- 为减少首屏 JS 体积，页面仅在需要时请求相应的 `assets/i18n/<code>.json` 语言文件，并在内存中缓存；
+- 为减少首屏 JS 体积，页面仅在需要时请求相应的 `<code>.json` 语言文件（远程获取），并在内存中缓存；
 - 若语言文件缺失或网络失败，将自动按回退链合并英文“内置基线”文案，确保页面可用；
 - 部署注意：
 	- 浏览器出于安全限制，`file://` 直接双击打开可能会拦截 `fetch()` 读取 JSON。请在本地启动一个简易的 HTTP 服务再访问（例如使用任意静态服务器）；
@@ -337,9 +350,9 @@ example.com {
 
 ```
 .
-├─ index.html           # 主页面（内联 CSS/JS，按需拉取语言 JSON）
+├─ index.html           # 主页面（内联 CSS/JS，远程按需拉取语言 JSON，支持单文件部署）
 ├─ assets/
-│  └─ i18n/             # 按语言代码命名的 JSON 语言包（不包含 en，英文为内置基线）
+│  └─ i18n/             # 语言包源文件（用于仓库维护/镜像构建；生产可不携带此目录）
 │     ├─ zh.json
 │     ├─ es.json  …
 │     └─ (更多语言)
