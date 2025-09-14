@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,188 +21,188 @@
             -webkit-font-smoothing: antialiased
         }
 
-        .c {
+        .container {
             max-width: 60rem;
             margin: 0 auto;
             padding: 0 2rem
         }
 
-        .h {
+        .header {
             margin-bottom: 2rem;
             padding: 1.5rem 0
         }
 
-        .et {
+        .error-title {
             display: flex;
             align-items: baseline;
             gap: 2rem;
             margin-bottom: 1rem
         }
 
-        .ec {
+        .error-code {
             font-size: 4.5rem;
             font-weight: 200;
             color: #404040;
             margin: 0;
-            letter-spacing: -.02em
+            letter-spacing: -0.02em
         }
 
-        .ri {
+        .ray-info {
             font-family: monaco, courier, monospace;
-            font-size: .9rem;
+            font-size: 0.9rem;
             color: #999;
             font-weight: 400;
-            margin-top: .5rem;
-            letter-spacing: .025em
+            margin-top: 0.5rem;
+            letter-spacing: 0.025em
         }
 
-        #r {
+        .ray-id {
             cursor: pointer;
-            transition: color .2s
+            transition: color 0.2s
         }
 
-        #r:hover {
+        .ray-id:hover {
             color: #0051c3
         }
 
-        .ed {
+        .error-description {
             font-size: 1.125rem;
             color: #666;
             font-weight: 400;
             margin: 0;
             line-height: 1.6;
             max-width: 600px;
-            opacity: .9
+            opacity: 0.9
         }
 
-        .ct {
+        .content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             margin-bottom: 2rem
         }
 
-        .s h2 {
+        .section h2 {
             font-size: 1.875rem;
             font-weight: 400;
             color: #404040;
             margin-bottom: 1rem
         }
 
-        .s p {
-            font-size: .95rem;
+        .section p {
+            font-size: 0.95rem;
             line-height: 1.5;
             color: #6b7280;
-            margin-bottom: .75rem
+            margin-bottom: 0.75rem
         }
 
-        .s strong {
+        .section strong {
             font-weight: 600;
             color: #404040
         }
 
-        .is {
+        .ip-section {
             background: #fff;
-            border-radius: .5rem;
+            border-radius: 0.5rem;
             padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem
         }
 
-        .ih {
+        .ip-header {
             display: flex;
             align-items: center;
-            gap: .75rem;
+            gap: 0.75rem;
             margin-bottom: 1rem
         }
 
-        .ii {
+        .ip-icon {
             width: 1.25rem;
             height: 1.25rem;
             background: #0051c3;
-            border-radius: .25rem;
+            border-radius: 0.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: .75rem
+            font-size: 0.75rem
         }
 
-        .it {
+        .ip-title {
             font-weight: 600;
             color: #404040
         }
 
-        .x {
+        .ip-sources {
             display: flex;
-            gap: .5rem;
+            gap: 0.5rem;
             flex-wrap: wrap
         }
 
-        .p {
+        .ip-source {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
-            border-radius: .25rem;
-            padding: .5rem .75rem;
-            font-size: .75rem;
+            border-radius: 0.25rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            transition: all .2s
+            transition: all 0.2s
         }
 
-        .p.ok {
+        .ip-source.success {
             background: #d4edda;
             border-color: #c3e6cb;
             color: #155724
         }
 
-        .p.er {
+        .ip-source.error {
             background: #f8d7da;
             border-color: #f5c6cb;
             color: #721c24
         }
 
-        .f {
+        .footer {
             text-align: center;
             color: #999;
-            font-size: .8125rem;
+            font-size: 0.8125rem;
             border-top: 1px solid #e9ecef;
             padding-top: 2rem;
             margin-top: 2rem
         }
 
-        .fl {
-            margin-bottom: .5rem
+        .footer-line {
+            margin-bottom: 0.5rem
         }
 
-        .f strong {
+        .footer strong {
             color: #404040;
             font-weight: 600
         }
 
-        .f a {
+        .footer a {
             color: #0051c3;
             text-decoration: none;
-            transition: color .15s ease
+            transition: color 0.15s ease
         }
 
-        .f a:hover {
+        .footer a:hover {
             color: #ee730a
         }
 
-        .l {
+        .loading {
             display: inline-block;
-            width: .75rem;
-            height: .75rem;
+            width: 0.75rem;
+            height: 0.75rem;
             border: 2px solid #e9ecef;
             border-top: 2px solid #0051c3;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-right: .5rem
+            margin-right: 0.5rem
         }
 
         @keyframes spin {
             0% {
-                transform: rotate(0)
+                transform: rotate(0deg)
             }
 
             100% {
@@ -210,27 +210,40 @@
             }
         }
 
+        /* Language selector */
+        .lang-select {
+            position: fixed;
+            top: 12px;
+            right: 16px;
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.85rem;
+            color: #404040;
+        }
+
         @media (max-width:768px) {
-            .ec {
+            .error-code {
                 font-size: 3.5rem
             }
 
-            .et {
+            .error-title {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: .5rem
+                gap: 0.5rem
             }
 
-            .ri {
+            .ray-info {
                 margin-top: 0
             }
 
-            .ct {
+            .content {
                 grid-template-columns: 1fr;
                 gap: 2rem
             }
 
-            .c {
+            .container {
                 padding: 0 1rem
             }
         }
@@ -238,47 +251,241 @@
 </head>
 
 <body>
-    <div class="c">
-        <div class="h">
-            <div class="et">
-                <h1 class="ec">Error 1402</h1>
-                <div class="ri">Ray ID: <span id="r"></span> • <span id="t"></span></div>
+    <select id="lang-select" class="lang-select" aria-label="Language"></select>
+    <div class="container">
+        <div class="header">
+            <div class="error-title">
+                <h1 class="error-code" data-i18n="error_code">Error 1402</h1>
+                <div class="ray-info"><span id="ray-prefix" data-i18n="ray_prefix">Ray ID:</span> <span class="ray-id" id="ray-id"></span> • <span id="timestamp"></span>
+                </div>
             </div>
-            <h2 class="ed">An unexpected error occurred. You may not have the necessary permissions to access this page.
-            </h2>
+            <h2 class="error-description" data-i18n="error_description">An unexpected error occurred. You may not have the necessary permissions to
+                access this page.</h2>
         </div>
-        <div class="is">
-            <div class="ih">
-                <div class="ii">🌐</div>
-                <div class="it">Your IP Address</div>
+        <div class="ip-section">
+            <div class="ip-header">
+                <div class="ip-icon">🌐</div>
+                <div class="ip-title" data-i18n="ip_title">Your IP Address</div>
             </div>
-            <div class="x" id="i">
-                <div class="p"><span class="l"></span>Detecting...</div>
+            <div class="ip-sources" id="ip-sources">
+                <div class="ip-source"><span class="loading"></span>Detecting...</div>
             </div>
         </div>
-        <div class="ct">
-            <div class="s">
-                <h2>What happened?</h2>
-                <p>You've requested a page on a website that is on the <strong>EURUN CDN network</strong>. The host is
+        <div class="content">
+            <div class="section">
+                <h2 data-i18n="what_happened">What happened?</h2>
+                <p data-i18n="what_happened_p1">You've requested a page on a website that is on the <strong>EURUN CDN network</strong>. The host is
                     configured with access restrictions, and you may not have the necessary permissions to access this
                     page.</p>
-                <p>This could be due to security policies, geographic restrictions, or server configuration issues on
+                <p data-i18n="what_happened_p2">This could be due to security policies, geographic restrictions, or server configuration issues on
                     the <strong>EURUN CDN</strong> network.</p>
             </div>
-            <div class="s">
-                <h2>What can I do?</h2>
-                <p>If you are a visitor of this website, please try again in a few minutes.</p>
-                <p>If you are the owner of this website, check your DNS settings and security configurations.</p>
+            <div class="section">
+                <h2 data-i18n="what_can_i_do">What can I do?</h2>
+                <p data-i18n="what_can_i_do_p1">If you are a visitor of this website, please try again in a few minutes.</p>
+                <p data-i18n="what_can_i_do_p2">If you are the owner of this website, check your DNS settings and security configurations.</p>
             </div>
         </div>
-        <div class="f">
-            <div class="fl">Performance & security by <strong>EURUN CDN</strong> • Operated by <strong>HKTSE
+        <div class="footer">
+            <div class="footer-line footer-line-1" data-i18n="footer_line1">Performance & security by <strong>EURUN CDN</strong> • Operated by <strong>HKTSE
                     s.r.o.</strong></div>
-            <div class="fl">Holandská 49/4, 10100 Praha, Czech Republic • Contact: <a
+            <div class="footer-line footer-line-2" data-i18n="footer_line2">Holandská 49/4, 10100 Praha, Czech Republic • Contact: <a
                     href="mailto:info@hktse.eu.org">info@hktse.eu.org</a></div>
         </div>
     </div>
-    <script>const S = [{ n: 'IPIP.net', u: 'https://myip.ipip.net/json', x: d => d.data?.ip }, { n: 'IPInfo.io', u: 'https://ipinfo.io/json', x: d => d.ip }, { n: 'IPify', u: 'https://api.ipify.org?format=json', x: d => d.ip }]; async function f() { const c = document.getElementById('i'); c.innerHTML = ''; S.forEach(s => { const e = document.createElement('div'); e.className = 'p'; e.textContent = s.n + ': Detecting...'; e.id = s.n.toLowerCase().replace('.', ''); c.appendChild(e) }); const r = await Promise.allSettled(S.map(async s => { try { const a = new AbortController(), t = setTimeout(() => a.abort(), 3e3), res = await fetch(s.u, { signal: a.signal }); clearTimeout(t); const d = await res.json(), ip = s.x(d); if (ip && /^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) return { n: s.n, ip }; throw 0 } catch (e) { return { n: s.n, er: 1 } } })); r.forEach((v, i) => { const e = document.getElementById(S[i].n.toLowerCase().replace('.', '')); if (v.status === 'fulfilled' && v.value.ip) { e.className = 'p ok'; e.textContent = S[i].n + ': ' + v.value.ip } else { e.className = 'p er'; e.textContent = S[i].n + ': Failed' } }) } function g() { const h = Date.now().toString(16), r = Math.random().toString(16).slice(2, 10); return (h + r).slice(0, 16) } function T() { return new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC' } document.addEventListener('click', e => { if (e.target.id === 'r') { navigator.clipboard && navigator.clipboard.writeText(e.target.textContent).then(() => { const o = e.target.textContent; e.target.textContent = 'Copied!'; e.target.style.color = '#28a745'; setTimeout(() => { e.target.textContent = o; e.target.style.color = '' }, 1e3) }) } }); document.getElementById('r').textContent = g(); document.getElementById('t').textContent = T(); f();</script>
+    <script>
+        // i18n dictionary
+        const i18n = {
+            en: {
+                title: 'Error 1402 - EURUN CDN',
+                error_code: 'Error 1402',
+                ray_prefix: 'Ray ID:',
+                error_description: 'An unexpected error occurred. You may not have the necessary permissions to access this page.',
+                ip_title: 'Your IP Address',
+                detecting: 'Detecting...',
+                what_happened: 'What happened?',
+                what_happened_p1: "You've requested a page on a website that is on the <strong>EURUN CDN network</strong>. The host is configured with access restrictions, and you may not have the necessary permissions to access this page.",
+                what_happened_p2: 'This could be due to security policies, geographic restrictions, or server configuration issues on the <strong>EURUN CDN</strong> network.',
+                what_can_i_do: 'What can I do?',
+                what_can_i_do_p1: 'If you are a visitor of this website, please try again in a few minutes.',
+                what_can_i_do_p2: 'If you are the owner of this website, check your DNS settings and security configurations.',
+                footer_line1: 'Performance & security by <strong>EURUN CDN</strong> • Operated by <strong>HKTSE s.r.o.</strong>',
+                footer_line2: 'Holandská 49/4, 10100 Praha, Czech Republic • Contact: <a href="mailto:info@hktse.eu.org">info@hktse.eu.org</a>',
+                ip_source_failed: 'Failed',
+                copied: 'Copied!',
+                lang_en: 'English',
+                lang_zh: '中文',
+                sep: ': '
+            },
+            zh: {
+                title: '错误 1402 - EURUN CDN',
+                error_code: '错误 1402',
+                ray_prefix: 'Ray ID：',
+                error_description: '发生了意外错误。您可能没有访问此页面的权限。',
+                ip_title: '您的 IP 地址',
+                detecting: '检测中…',
+                what_happened: '发生了什么？',
+                what_happened_p1: '您请求访问的网站位于 <strong>EURUN CDN 网络</strong> 上。该主机启用了访问限制，您可能没有访问此页面的权限。',
+                what_happened_p2: '这可能由于安全策略、地域限制或 <strong>EURUN CDN</strong> 网络上的服务器配置问题导致。',
+                what_can_i_do: '我能做什么？',
+                what_can_i_do_p1: '如果您是访客，请稍后再试。',
+                what_can_i_do_p2: '如果您是网站所有者，请检查 DNS 设置与安全配置。',
+                footer_line1: '由 <strong>EURUN CDN</strong> 提供性能与安全 • 运营方 <strong>HKTSE s.r.o.</strong>',
+                footer_line2: 'Holandská 49/4, 10100 Praha, Czech Republic • 联系方式：<a href="mailto:info@hktse.eu.org">info@hktse.eu.org</a>',
+                ip_source_failed: '失败',
+                copied: '已复制！',
+                lang_en: 'English',
+                lang_zh: '中文',
+                sep: '：'
+            }
+        };
+
+        function getDefaultLang() {
+            const saved = localStorage.getItem('lang');
+            if (saved === 'zh' || saved === 'en') return saved;
+            return navigator.language?.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+        }
+
+        let currentLang = getDefaultLang();
+
+        function t(key) {
+            return i18n[currentLang]?.[key] ?? key;
+        }
+
+        function sep() {
+            return i18n[currentLang]?.sep ?? ': ';
+        }
+
+        function setText(selector, key) {
+            const el = document.querySelector(selector);
+            if (el) el.textContent = t(key);
+        }
+
+        function setHTML(selector, key) {
+            const el = document.querySelector(selector);
+            if (el) el.innerHTML = t(key);
+        }
+
+        function applyI18n() {
+            document.documentElement.lang = currentLang;
+            document.title = t('title');
+            setText('.error-code', 'error_code');
+            setText('#ray-prefix', 'ray_prefix');
+            setText('.ip-title', 'ip_title');
+            setText('.error-description', 'error_description');
+            setText('[data-i18n=what_happened]', 'what_happened');
+            setHTML('[data-i18n=what_happened_p1]', 'what_happened_p1');
+            setHTML('[data-i18n=what_happened_p2]', 'what_happened_p2');
+            setText('[data-i18n=what_can_i_do]', 'what_can_i_do');
+            setText('[data-i18n=what_can_i_do_p1]', 'what_can_i_do_p1');
+            setText('[data-i18n=what_can_i_do_p2]', 'what_can_i_do_p2');
+            setHTML('.footer-line-1', 'footer_line1');
+            setHTML('.footer-line-2', 'footer_line2');
+
+            const sel = document.getElementById('lang-select');
+            if (sel) {
+                sel.innerHTML = '';
+                sel.append(new Option(t('lang_en'), 'en', false, currentLang === 'en'));
+                sel.append(new Option(t('lang_zh'), 'zh', false, currentLang === 'zh'));
+            }
+            updateIpSourceLabels();
+        }
+
+        const ipServices = [
+            { name: 'IPIP.net', url: 'https://myip.ipip.net/json', extractIp: d => d.data?.ip },
+            { name: 'IPInfo.io', url: 'https://ipinfo.io/json', extractIp: d => d.ip },
+            { name: 'IPify', url: 'https://api.ipify.org?format=json', extractIp: d => d.ip }
+        ];
+        async function fetchUserIp() {
+            const container = document.getElementById('ip-sources');
+            container.innerHTML = '';
+            ipServices.forEach(service => {
+                const el = document.createElement('div');
+                el.className = 'ip-source';
+                el.textContent = `${service.name}${sep()}${t('detecting')}`;
+                el.id = service.name.toLowerCase().replace('.', '');
+                container.appendChild(el);
+            });
+            const results = await Promise.allSettled(ipServices.map(async service => {
+                try {
+                    const ctrl = new AbortController();
+                    const timeout = setTimeout(() => ctrl.abort(), 3000);
+                    const res = await fetch(service.url, { signal: ctrl.signal, headers: { 'Accept': 'application/json' } });
+                    clearTimeout(timeout);
+                    const data = await res.json();
+                    const ip = service.extractIp(data);
+                    if (ip && /^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) {
+                        return { name: service.name, ip };
+                    }
+                    throw new Error('Invalid IP');
+                } catch (e) {
+                    return { name: service.name, error: true };
+                }
+            }));
+            results.forEach((result, i) => {
+                const el = document.getElementById(ipServices[i].name.toLowerCase().replace('.', ''));
+                if (result.status === 'fulfilled' && result.value.ip) {
+                    el.className = 'ip-source success';
+                    el.dataset.ip = result.value.ip;
+                    el.textContent = `${ipServices[i].name}${sep()}${result.value.ip}`;
+                } else {
+                    el.className = 'ip-source error';
+                    el.textContent = `${ipServices[i].name}${sep()}${t('ip_source_failed')}`;
+                }
+            });
+        }
+        function updateIpSourceLabels() {
+            const container = document.getElementById('ip-sources');
+            if (!container) return;
+            ipServices.forEach(service => {
+                const id = service.name.toLowerCase().replace('.', '');
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (el.classList.contains('success')) {
+                    const ip = el.dataset.ip || '';
+                    if (ip) el.textContent = `${service.name}${sep()}${ip}`;
+                } else if (el.classList.contains('error')) {
+                    el.textContent = `${service.name}${sep()}${t('ip_source_failed')}`;
+                } else {
+                    el.textContent = `${service.name}${sep()}${t('detecting')}`;
+                }
+            });
+        }
+        function generateRayId() {
+            const now = Date.now();
+            const hex = now.toString(16);
+            const rand = Math.random().toString(16).substr(2, 8);
+            return `${hex}${rand}`.substr(0, 16);
+        }
+        function formatTime() {
+            return new Date().toISOString().replace('T', ' ').substr(0, 19) + ' UTC';
+        }
+        document.addEventListener('click', e => {
+            if (e.target.id === 'ray-id') {
+                navigator.clipboard?.writeText(e.target.textContent).then(() => {
+                    const orig = e.target.textContent;
+                    e.target.textContent = t('copied');
+                    e.target.style.color = '#28a745';
+                    setTimeout(() => {
+                        e.target.textContent = orig;
+                        e.target.style.color = '';
+                    }, 1000);
+                });
+            }
+        });
+        // Initialize lang selector and i18n
+        const langSelect = document.getElementById('lang-select');
+        langSelect.addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            localStorage.setItem('lang', currentLang);
+            applyI18n();
+        });
+        applyI18n();
+
+        document.getElementById('ray-id').textContent = generateRayId();
+        document.getElementById('timestamp').textContent = formatTime();
+        fetchUserIp();
+    </script>
 </body>
 
 </html>
