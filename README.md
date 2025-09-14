@@ -263,11 +263,11 @@ example.com {
 
 - 页面右上角提供语言选择器，现已内置 30+ 常用语言，语言包采用“按需加载”的外部 JSON 文件：`assets/i18n/<code>.json`。
 - 默认语言自动检测优先级：
-	1. `localStorage.lang`（若设置）；
-	2. 浏览器语言精确匹配（如 `pt-BR`、`en-GB`）；
-	3. 浏览器语言前缀匹配（如 `pt-BR` → `pt`）；
-	4. 兜底为 `en`（英语）。
-- 语言加载与回退链：会按“精确语言 → 基础前缀 → 英文(en)”三层合并加载，缺失键会自动用上层回退补齐。
+	1. 用户明确选择的语言（`localStorage.lang`，仅当 `localStorage.langPinned=1` 时才生效，避免误固定）；
+	2. 逐项解析浏览器语言列表：对每一项先尝试“精确匹配”，若无则尝试其“基础前缀匹配”（例如 `zh-CN` → `zh`），再继续下一项；
+	3. 仍未命中时兜底为 `en`。
+- 语言加载与回退链：会按“精确语言 → 基础前缀 → 英文(页面内置基线)”三层合并加载，缺失键会自动用上层回退补齐。
+- 英文(en)不再从 `assets/i18n/en.json` 拉取，而是以内置 DOM 文案作为“英文基线”。只有非英文语言才会按需拉取对应 JSON。
 - 已内置语言（代码 → 母语名，节选）：
 	- `en` English，`zh` 中文，`es` Español，`fr` Français，`de` Deutsch，`ja` 日本語，`ko` 한국어，`ru` Русский，`ar` العربية，`pt` Português，`it` Italiano，`nl` Nederlands，`sv` Svenska，`no` Norsk，`pl` Polski，`tr` Türkçe，`hi` हिन्दी，`th` ไทย，`vi` Tiếng Việt，`id` Bahasa Indonesia，`he` עברית，`uk` Українська，`cs` Čeština，`ro` Română，`el` Ελληνικά，`hu` Magyar，`da` Dansk，`fi` Suomi，`bg` Български，`sk` Slovenčina，`ca` Català，`ms` Bahasa Melayu，`fil` Filipino。
 - RTL（从右到左）语言支持：当选择 `ar` 或 `he` 时，会自动设置 `dir="rtl"`，其它语言为 `ltr`。
@@ -281,7 +281,7 @@ example.com {
 #### 什么是“懒加载”语言包？
 
 - 为减少首屏 JS 体积，页面仅在需要时请求相应的 `assets/i18n/<code>.json` 语言文件，并在内存中缓存；
-- 若语言文件缺失或网络失败，将自动按回退链合并英文(en)文案，确保页面可用；
+- 若语言文件缺失或网络失败，将自动按回退链合并英文“内置基线”文案，确保页面可用；
 - 部署注意：
 	- 浏览器出于安全限制，`file://` 直接双击打开可能会拦截 `fetch()` 读取 JSON。请在本地启动一个简易的 HTTP 服务再访问（例如使用任意静态服务器）；
 	- 建议为 `assets/i18n/*.json` 设置缓存头：`Cache-Control: public, max-age=86400, immutable`，以减少重复请求；
@@ -289,10 +289,19 @@ example.com {
 
 #### 新增语言步骤
 
-1. 复制 `assets/i18n/en.json` 为 `assets/i18n/<code>.json`，逐项翻译所有键；
+1. 复制任意现有语言文件（建议 `zh.json` 或其它）为 `assets/i18n/<code>.json`，逐项翻译所有键；
 2. 在 `index.html` 的 `languageMeta` 中加入 `<code>: '母语名'`，即可在选择器中显示；
 3. 若该语言需要特殊分隔符（如中文“：”），在 JSON 中设置 `"sep"`；
 4. 如需新增页面段落，对元素加 `data-i18n="key"` 并在各语言 JSON 中补充对应键。
+
+#### 调试与故障排查
+
+- 在地址栏后缀添加 `?debug=i18n` 可显示一个小型调试面板，包含：`navigator.language`、`navigator.languages`、算法解析出的 `resolved`、最终 `currentLang`、以及语言包是否加载成功（pack loaded）。
+- 如果你发现清空 `localStorage` 后第一次访问仍然不是期望语言：
+	- 确认不是用 `file://` 打开（会阻止 JSON 拉取，导致回退到英文基线）；
+	- 打开 `?debug=i18n` 检查浏览器语言顺序；
+	- 注意我们已修复解析顺序：现在会对浏览器语言列表逐项处理“精确→前缀”，例如 `zh-CN` 将先尝试 `zh-CN`，再尝试 `zh`，然后才会看后续的 `en`；
+	- 若你手动选择了语言，页面会设置 `langPinned=1` 并优先使用本地保存的语言（方便固定展示）。
 
 
 ## 隐私与合规说明
