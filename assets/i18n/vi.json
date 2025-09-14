@@ -1,0 +1,19 @@
+{
+  "title": "Lỗi 1402 - EURUN CDN",
+  "error_code": "Lỗi 1402",
+  "ray_prefix": "ID Ray:",
+  "error_description": "Đã xảy ra lỗi không mong muốn. Có thể bạn không có quyền truy cập trang này.",
+  "ip_title": "Địa chỉ IP của bạn",
+  "detecting": "Đang phát hiện...",
+  "what_happened": "Điều gì đã xảy ra?",
+  "what_happened_p1": "Bạn đã yêu cầu một trang trên một trang web nằm trong <strong>mạng EURUN CDN</strong>. Máy chủ có các hạn chế truy cập và có thể bạn không có quyền truy cập trang này.",
+  "what_happened_p2": "Điều này có thể do chính sách bảo mật, hạn chế địa lý hoặc sự cố cấu hình máy chủ trên <strong>mạng EURUN CDN</strong>.",
+  "what_can_i_do": "Tôi có thể làm gì?",
+  "what_can_i_do_p1": "Nếu bạn là khách truy cập, vui lòng thử lại sau vài phút.",
+  "what_can_i_do_p2": "Nếu bạn là chủ sở hữu trang, hãy kiểm tra cài đặt DNS và bảo mật của bạn.",
+  "footer_line1": "Hiệu năng và bảo mật bởi <strong>EURUN CDN</strong> • Vận hành bởi <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praha, Cộng hòa Séc • Liên hệ: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Thất bại",
+  "copied": "Đã sao chép!",
+  "sep": ": "
+}

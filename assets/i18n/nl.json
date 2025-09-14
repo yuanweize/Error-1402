@@ -1,0 +1,19 @@
+{
+  "title": "Fout 1402 - EURUN CDN",
+  "error_code": "Fout 1402",
+  "ray_prefix": "Ray-ID:",
+  "error_description": "Er is een onverwachte fout opgetreden. Mogelijk hebt u geen toestemming om deze pagina te openen.",
+  "ip_title": "Uw IP-adres",
+  "detecting": "Detecteren...",
+  "what_happened": "Wat is er gebeurd?",
+  "what_happened_p1": "U hebt een pagina opgevraagd op een website die zich op het <strong>EURUN CDN-netwerk</strong> bevindt. De host heeft toegangsbeperkingen en mogelijk hebt u geen toestemming om deze pagina te bekijken.",
+  "what_happened_p2": "Dit kan te wijten zijn aan beveiligingsbeleid, geografische beperkingen of serverconfiguratieproblemen op het <strong>EURUN CDN-netwerk</strong>.",
+  "what_can_i_do": "Wat kan ik doen?",
+  "what_can_i_do_p1": "Als u bezoeker bent, probeer het dan over een paar minuten opnieuw.",
+  "what_can_i_do_p2": "Als u de site-eigenaar bent, controleer dan uw DNS- en beveiligingsinstellingen.",
+  "footer_line1": "Prestaties en beveiliging door <strong>EURUN CDN</strong> • Beheerd door <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praag, Tsjechië • Contact: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Mislukt",
+  "copied": "Gekopieerd!",
+  "sep": ": "
+}

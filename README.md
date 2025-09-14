@@ -259,23 +259,40 @@ example.com {
 	- 移动端响应式在 `@media (max-width:768px)` 中调整。
 
 
-### 多语言切换（中/英）
+### 多语言与懒加载（i18n）
 
-- 页面右上角提供语言选择器，支持 English / 中文 两种语言。
-- 默认语言按规则自动判定：
-	- 若 `localStorage.lang` 已保存，则使用该值；
-	- 否则依据 `navigator.language` 选择（以 `zh` 开头则中文，否则英文）。
-- 所有可翻译文案由内嵌的 `i18n` 字典驱动，关键键位包括：
+- 页面右上角提供语言选择器，现已内置 30+ 常用语言，语言包采用“按需加载”的外部 JSON 文件：`assets/i18n/<code>.json`。
+- 默认语言自动检测优先级：
+	1. `localStorage.lang`（若设置）；
+	2. 浏览器语言精确匹配（如 `pt-BR`、`en-GB`）；
+	3. 浏览器语言前缀匹配（如 `pt-BR` → `pt`）；
+	4. 兜底为 `en`（英语）。
+- 语言加载与回退链：会按“精确语言 → 基础前缀 → 英文(en)”三层合并加载，缺失键会自动用上层回退补齐。
+- 已内置语言（代码 → 母语名，节选）：
+	- `en` English，`zh` 中文，`es` Español，`fr` Français，`de` Deutsch，`ja` 日本語，`ko` 한국어，`ru` Русский，`ar` العربية，`pt` Português，`it` Italiano，`nl` Nederlands，`sv` Svenska，`no` Norsk，`pl` Polski，`tr` Türkçe，`hi` हिन्दी，`th` ไทย，`vi` Tiếng Việt，`id` Bahasa Indonesia，`he` עברית，`uk` Українська，`cs` Čeština，`ro` Română，`el` Ελληνικά，`hu` Magyar，`da` Dansk，`fi` Suomi，`bg` Български，`sk` Slovenčina，`ca` Català，`ms` Bahasa Melayu，`fil` Filipino。
+- RTL（从右到左）语言支持：当选择 `ar` 或 `he` 时，会自动设置 `dir="rtl"`，其它语言为 `ltr`。
+- 可翻译键位包含：
 	- `title`, `error_code`, `ray_prefix`, `error_description`
 	- `ip_title`, `detecting`, `ip_source_failed`, `copied`
 	- `what_happened`, `what_happened_p1`, `what_happened_p2`
 	- `what_can_i_do`, `what_can_i_do_p1`, `what_can_i_do_p2`
-	- `footer_line1`, `footer_line2`, `lang_en`, `lang_zh`, `sep`
-- 若需新增语言：
-	1. 在 `i18n` 对象中新增语言键（如 `jp`），按上述键位补齐文案；
-	2. 在语言选择器构建处添加对应 `<option>`；
-	3. 如需特殊分隔符（如中文“：”），在新语言中定义 `sep`；
-	4. 如需更多段落或模块，给元素加上 `data-i18n="key"` 并在字典里新增键即可。
+	- `footer_line1`, `footer_line2`, `sep`
+
+#### 什么是“懒加载”语言包？
+
+- 为减少首屏 JS 体积，页面仅在需要时请求相应的 `assets/i18n/<code>.json` 语言文件，并在内存中缓存；
+- 若语言文件缺失或网络失败，将自动按回退链合并英文(en)文案，确保页面可用；
+- 部署注意：
+	- 浏览器出于安全限制，`file://` 直接双击打开可能会拦截 `fetch()` 读取 JSON。请在本地启动一个简易的 HTTP 服务再访问（例如使用任意静态服务器）；
+	- 建议为 `assets/i18n/*.json` 设置缓存头：`Cache-Control: public, max-age=86400, immutable`，以减少重复请求；
+	- 如需新增 RTL 语言，请将代码加入脚本中的 `rtlLangs` 集合。
+
+#### 新增语言步骤
+
+1. 复制 `assets/i18n/en.json` 为 `assets/i18n/<code>.json`，逐项翻译所有键；
+2. 在 `index.html` 的 `languageMeta` 中加入 `<code>: '母语名'`，即可在选择器中显示；
+3. 若该语言需要特殊分隔符（如中文“：”），在 JSON 中设置 `"sep"`；
+4. 如需新增页面段落，对元素加 `data-i18n="key"` 并在各语言 JSON 中补充对应键。
 
 
 ## 隐私与合规说明
@@ -311,8 +328,15 @@ example.com {
 
 ```
 .
-├─ index.html   # 主页面（内联 CSS/JS）
-└─ README.md    # 项目说明（本文件）
+├─ index.html           # 主页面（内联 CSS/JS，按需拉取语言 JSON）
+├─ assets/
+│  └─ i18n/             # 按语言代码命名的 JSON 语言包
+│     ├─ en.json
+│     ├─ zh.json
+│     ├─ es.json  …
+│     └─ (更多语言)
+├─ README.md            # 项目说明（中文）
+└─ README.en.md         # 项目说明（英文）
 ```
 
 

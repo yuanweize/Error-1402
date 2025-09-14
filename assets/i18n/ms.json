@@ -1,0 +1,19 @@
+{
+  "title": "Ralat 1402 - EURUN CDN",
+  "error_code": "Ralat 1402",
+  "ray_prefix": "ID Ray:",
+  "error_description": "Ralat yang tidak dijangka berlaku. Anda mungkin tidak mempunyai kebenaran untuk mengakses halaman ini.",
+  "ip_title": "Alamat IP anda",
+  "detecting": "Mengesan...",
+  "what_happened": "Apa yang berlaku?",
+  "what_happened_p1": "Anda meminta halaman di laman web yang berada dalam <strong>rangkaian EURUN CDN</strong>. Hos mempunyai sekatan akses dan anda mungkin tidak mempunyai kebenaran untuk mengakses halaman ini.",
+  "what_happened_p2": "Ini mungkin disebabkan oleh dasar keselamatan, sekatan geografi atau masalah konfigurasi pelayan dalam <strong>rangkaian EURUN CDN</strong>.",
+  "what_can_i_do": "Apa yang boleh saya lakukan?",
+  "what_can_i_do_p1": "Jika anda seorang pelawat, cuba lagi dalam beberapa minit.",
+  "what_can_i_do_p2": "Jika anda pemilik laman, semak tetapan DNS dan keselamatan anda.",
+  "footer_line1": "Prestasi dan keselamatan oleh <strong>EURUN CDN</strong> • Dikendalikan oleh <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Prague, Republik Czech • Hubungi: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Gagal",
+  "copied": "Disalin!",
+  "sep": ": "
+}

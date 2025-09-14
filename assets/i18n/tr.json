@@ -1,0 +1,19 @@
+{
+  "title": "Hata 1402 - EURUN CDN",
+  "error_code": "Hata 1402",
+  "ray_prefix": "Ray Kimliği:",
+  "error_description": "Beklenmeyen bir hata oluştu. Bu sayfaya erişme izniniz olmayabilir.",
+  "ip_title": "IP adresiniz",
+  "detecting": "Tespit ediliyor...",
+  "what_happened": "Ne oldu?",
+  "what_happened_p1": "<strong>EURUN CDN ağı</strong> üzerindeki bir web sitesinde bir sayfa istediniz. Sunucuda erişim kısıtlamaları var ve bu sayfaya erişme izniniz olmayabilir.",
+  "what_happened_p2": "Bu, <strong>EURUN CDN ağı</strong> üzerinde güvenlik politikaları, coğrafi kısıtlamalar veya sunucu yapılandırma sorunlarından kaynaklanabilir.",
+  "what_can_i_do": "Ne yapabilirim?",
+  "what_can_i_do_p1": "Ziyaretçiyseniz birkaç dakika sonra tekrar deneyin.",
+  "what_can_i_do_p2": "Site sahibiyseniz DNS ve güvenlik ayarlarınızı kontrol edin.",
+  "footer_line1": "<strong>EURUN CDN</strong> tarafından performans ve güvenlik • İşletme: <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Prag, Çekya • İletişim: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Başarısız",
+  "copied": "Kopyalandı!",
+  "sep": ": "
+}

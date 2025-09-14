@@ -1,0 +1,19 @@
+{
+  "title": "שגיאה 1402 - EURUN CDN",
+  "error_code": "שגיאה 1402",
+  "ray_prefix": "מזהה Ray:",
+  "error_description": "אירעה שגיאה בלתי צפויה. ייתכן שאין לך הרשאה לגשת לדף זה.",
+  "ip_title": "כתובת ה-IP שלך",
+  "detecting": "מאתר...",
+  "what_happened": "מה קרה?",
+  "what_happened_p1": "ביקשת דף באתר הנמצא ב-<strong>רשת EURUN CDN</strong>. למארח יש הגבלות גישה וייתכן שאין לך הרשאה לגשת לדף זה.",
+  "what_happened_p2": "זה יכול לנבוע ממדיניות אבטחה, מגבלות גיאוגרפיות או בעיות בתצורת השרת ב-<strong>רשת EURUN CDN</strong>.",
+  "what_can_i_do": "מה אפשר לעשות?",
+  "what_can_i_do_p1": "אם אתה מבקר, נסה שוב בעוד מספר דקות.",
+  "what_can_i_do_p2": "אם אתה בעל האתר, בדוק את הגדרות ה-DNS והאבטחה שלך.",
+  "footer_line1": "ביצועים ואבטחה מאת <strong>EURUN CDN</strong> • מופעל על ידי <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, פראג 10100, צ'כיה • יצירת קשר: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "כשל",
+  "copied": "הועתק!",
+  "sep": ": "
+}

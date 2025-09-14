@@ -1,0 +1,19 @@
+{
+  "title": "Fehler 1402 - EURUN CDN",
+  "error_code": "Fehler 1402",
+  "ray_prefix": "Ray-ID:",
+  "error_description": "Ein unerwarteter Fehler ist aufgetreten. Möglicherweise haben Sie keine Berechtigung, auf diese Seite zuzugreifen.",
+  "ip_title": "Ihre IP-Adresse",
+  "detecting": "Ermitteln...",
+  "what_happened": "Was ist passiert?",
+  "what_happened_p1": "Sie haben eine Seite auf einer Website angefordert, die sich im <strong>EURUN CDN-Netzwerk</strong> befindet. Der Host hat Zugriffsbeschränkungen und möglicherweise haben Sie keine Berechtigung, auf diese Seite zuzugreifen.",
+  "what_happened_p2": "Dies kann auf Sicherheitsrichtlinien, geografische Beschränkungen oder Serverkonfigurationsprobleme im <strong>EURUN CDN-Netzwerk</strong> zurückzuführen sein.",
+  "what_can_i_do": "Was kann ich tun?",
+  "what_can_i_do_p1": "Wenn Sie ein Besucher sind, versuchen Sie es in ein paar Minuten erneut.",
+  "what_can_i_do_p2": "Wenn Sie der Website-Besitzer sind, überprüfen Sie Ihre DNS- und Sicherheitseinstellungen.",
+  "footer_line1": "Leistung und Sicherheit von <strong>EURUN CDN</strong> • Betrieben von <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Prag, Tschechien • Kontakt: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Fehlgeschlagen",
+  "copied": "Kopiert!",
+  "sep": ": "
+}

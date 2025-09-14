@@ -1,0 +1,19 @@
+{
+  "title": "خطأ 1402 - EURUN CDN",
+  "error_code": "خطأ 1402",
+  "ray_prefix": "معرّف Ray:",
+  "error_description": "حدث خطأ غير متوقع. قد لا تملك صلاحية الوصول إلى هذه الصفحة.",
+  "ip_title": "عنوان IP الخاص بك",
+  "detecting": "جارٍ الكشف...",
+  "what_happened": "ماذا حدث؟",
+  "what_happened_p1": "لقد طلبت صفحة على موقع ويب موجود على <strong>شبكة EURUN CDN</strong>. يحتوي المضيف على قيود وصول وقد لا تملك صلاحية الوصول إلى هذه الصفحة.",
+  "what_happened_p2": "قد يكون ذلك بسبب سياسات الأمان أو القيود الجغرافية أو مشكلات في تكوين الخادم على <strong>شبكة EURUN CDN</strong>.",
+  "what_can_i_do": "ماذا يمكنني أن أفعل؟",
+  "what_can_i_do_p1": "إذا كنت زائرًا، يرجى المحاولة مرة أخرى بعد بضع دقائق.",
+  "what_can_i_do_p2": "إذا كنت مالك الموقع، فتحقق من إعدادات DNS والأمان.",
+  "footer_line1": "الأداء والأمان بواسطة <strong>EURUN CDN</strong> • يتم التشغيل بواسطة <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4، 10100 براغ، جمهورية التشيك • الاتصال: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "فشل",
+  "copied": "تم النسخ!",
+  "sep": ": "
+}

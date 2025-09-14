@@ -1,0 +1,19 @@
+{
+  "title": "Eroare 1402 - EURUN CDN",
+  "error_code": "Eroare 1402",
+  "ray_prefix": "ID Ray:",
+  "error_description": "A apărut o eroare neașteptată. Este posibil să nu aveți permisiunea de a accesa această pagină.",
+  "ip_title": "Adresa dvs. IP",
+  "detecting": "Se detectează...",
+  "what_happened": "Ce s-a întâmplat?",
+  "what_happened_p1": "Ați solicitat o pagină pe un site web care se află în <strong>rețeaua EURUN CDN</strong>. Gazda are restricții de acces și este posibil să nu aveți permisiunea de a accesa această pagină.",
+  "what_happened_p2": "Acest lucru poate fi cauzat de politici de securitate, restricții geografice sau probleme de configurare a serverului în <strong>rețeaua EURUN CDN</strong>.",
+  "what_can_i_do": "Ce pot să fac?",
+  "what_can_i_do_p1": "Dacă sunteți vizitator, încercați din nou peste câteva minute.",
+  "what_can_i_do_p2": "Dacă sunteți proprietarul site-ului, verificați setările DNS și de securitate.",
+  "footer_line1": "Performanță și securitate de <strong>EURUN CDN</strong> • Operat de <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praga, Republica Cehă • Contact: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Eșuat",
+  "copied": "Copiat!",
+  "sep": ": "
+}

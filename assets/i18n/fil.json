@@ -1,0 +1,19 @@
+{
+  "title": "Error 1402 - EURUN CDN",
+  "error_code": "Error 1402",
+  "ray_prefix": "Ray ID:",
+  "error_description": "May naganap na hindi inaasahang error. Maaaring wala kang pahintulot na ma-access ang pahinang ito.",
+  "ip_title": "Ang iyong IP address",
+  "detecting": "Tinutukoy...",
+  "what_happened": "Ano ang nangyari?",
+  "what_happened_p1": "Humiling ka ng isang pahina sa isang website na nasa <strong>EURUN CDN network</strong>. May mga paghihigpit sa pag-access ang host at maaaring wala kang pahintulot na ma-access ang pahinang ito.",
+  "what_happened_p2": "Maaaring ito ay dahil sa mga patakaran sa seguridad, mga paghihigpit sa heograpiya, o mga problema sa pagsasaayos ng server sa <strong>EURUN CDN network</strong>.",
+  "what_can_i_do": "Ano ang maaari kong gawin?",
+  "what_can_i_do_p1": "Kung ikaw ay isang bisita, subukan muli makalipas ang ilang minuto.",
+  "what_can_i_do_p2": "Kung ikaw ang may-ari ng site, suriin ang iyong mga setting ng DNS at seguridad.",
+  "footer_line1": "Pagganap at seguridad ng <strong>EURUN CDN</strong> • Pinapatakbo ng <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Prague, Czech Republic • Contact: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Nabigo",
+  "copied": "Nakopya!",
+  "sep": ": "
+}

@@ -1,0 +1,19 @@
+{
+  "title": "1402-es hiba - EURUN CDN",
+  "error_code": "1402-es hiba",
+  "ray_prefix": "Ray azonosító:",
+  "error_description": "Váratlan hiba történt. Lehet, hogy nincs jogosultsága az oldal eléréséhez.",
+  "ip_title": "Az Ön IP-címe",
+  "detecting": "Felderítés...",
+  "what_happened": "Mi történt?",
+  "what_happened_p1": "Egy olyan webhelyen kért oldalt, amely a <strong>EURUN CDN hálózatán</strong> található. A kiszolgálón hozzáférési korlátozások vannak, és lehet, hogy nincs jogosultsága az oldal eléréséhez.",
+  "what_happened_p2": "Ezt okozhatják biztonsági irányelvek, földrajzi korlátozások vagy szerverkonfigurációs problémák a <strong>EURUN CDN hálózatán</strong>.",
+  "what_can_i_do": "Mit tehetek?",
+  "what_can_i_do_p1": "Ha látogató, próbálja meg néhány perc múlva újra.",
+  "what_can_i_do_p2": "Ha a webhely tulajdonosa, ellenőrizze a DNS- és biztonsági beállításokat.",
+  "footer_line1": "Teljesítmény és biztonság: <strong>EURUN CDN</strong> • Üzemelteti: <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Prága, Csehország • Kapcsolat: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Sikertelen",
+  "copied": "Másolva!",
+  "sep": ": "
+}
