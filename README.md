@@ -339,8 +339,7 @@ example.com {
 .
 ├─ index.html           # 主页面（内联 CSS/JS，按需拉取语言 JSON）
 ├─ assets/
-│  └─ i18n/             # 按语言代码命名的 JSON 语言包
-│     ├─ en.json
+│  └─ i18n/             # 按语言代码命名的 JSON 语言包（不包含 en，英文为内置基线）
 │     ├─ zh.json
 │     ├─ es.json  …
 │     └─ (更多语言)

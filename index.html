@@ -304,7 +304,7 @@
     <script>
         // Optional debug banner for i18n when using ?debug=i18n
         const DEBUG_I18N = new URLSearchParams(window.location.search).get('debug') === 'i18n';
-        // Lazy-loaded i18n: language JSON files under assets/i18n/<code>.json
+    // Lazy-loaded i18n: language JSON files under assets/i18n/<code>.json
         const languageMeta = {
             en: 'English', zh: '中文', es: 'Español', fr: 'Français', de: 'Deutsch',
             ja: '日本語', ko: '한국어', ru: 'Русский', ar: 'العربية', pt: 'Português',
@@ -319,30 +319,32 @@
 
         const i18nCache = new Map();
 
+        // Central i18n map (key -> selector + mode). Reused for baseline capture and DOM updates.
+        const I18N_MAP = [
+            ['error_code', '.error-code', 'text'],
+            ['ray_prefix', '#ray-prefix', 'text'],
+            ['ip_title', '.ip-title', 'text'],
+            ['error_description', '.error-description', 'text'],
+            ['what_happened', '[data-i18n=what_happened]', 'text'],
+            ['what_happened_p1', '[data-i18n=what_happened_p1]', 'html'],
+            ['what_happened_p2', '[data-i18n=what_happened_p2]', 'html'],
+            ['what_can_i_do', '[data-i18n=what_can_i_do]', 'text'],
+            ['what_can_i_do_p1', '[data-i18n=what_can_i_do_p1]', 'text'],
+            ['what_can_i_do_p2', '[data-i18n=what_can_i_do_p2]', 'text'],
+            ['footer_line1', '.footer-line-1', 'html'],
+            ['footer_line2', '.footer-line-2', 'html'],
+            // dynamic labels from hidden baseline bucket
+            ['ip_source_failed', '#i18n-baseline [data-i18n=ip_source_failed]', 'text'],
+            ['copied', '#i18n-baseline [data-i18n=copied]', 'text'],
+            ['detecting', '#i18n-baseline [data-i18n=detecting]', 'text'],
+            ['sep', '#i18n-baseline [data-i18n=sep]', 'text']
+        ];
+
         // Capture English baseline from DOM (used when currentLang is 'en' or when translations are unavailable)
         const baseline = {};
         function captureBaseline() {
             baseline.title = document.title || '';
-            const map = [
-                ['error_code', '.error-code', 'text'],
-                ['ray_prefix', '#ray-prefix', 'text'],
-                ['ip_title', '.ip-title', 'text'],
-                ['error_description', '.error-description', 'text'],
-                ['what_happened', '[data-i18n=what_happened]', 'text'],
-                ['what_happened_p1', '[data-i18n=what_happened_p1]', 'html'],
-                ['what_happened_p2', '[data-i18n=what_happened_p2]', 'html'],
-                ['what_can_i_do', '[data-i18n=what_can_i_do]', 'text'],
-                ['what_can_i_do_p1', '[data-i18n=what_can_i_do_p1]', 'text'],
-                ['what_can_i_do_p2', '[data-i18n=what_can_i_do_p2]', 'text'],
-                ['footer_line1', '.footer-line-1', 'html'],
-                ['footer_line2', '.footer-line-2', 'html'],
-                // dynamic labels from hidden baseline bucket
-                ['ip_source_failed', '#i18n-baseline [data-i18n=ip_source_failed]', 'text'],
-                ['copied', '#i18n-baseline [data-i18n=copied]', 'text'],
-                ['detecting', '#i18n-baseline [data-i18n=detecting]', 'text'],
-                ['sep', '#i18n-baseline [data-i18n=sep]', 'text']
-            ];
-            for (const [key, sel, mode] of map) {
+            for (const [key, sel, mode] of I18N_MAP) {
                 const el = document.querySelector(sel);
                 if (!el) continue;
                 baseline[key] = mode === 'html' ? el.innerHTML : (el.textContent || '').trim();
@@ -437,6 +439,13 @@
             if (el) el.innerHTML = t(key);
         }
 
+        function applyI18nToDom() {
+            for (const [key, sel, mode] of I18N_MAP) {
+                if (!sel) continue;
+                if (mode === 'html') setHTML(sel, key); else setText(sel, key);
+            }
+        }
+
         function buildLangSelector() {
             const sel = document.getElementById('lang-select');
             if (!sel) return;
@@ -471,18 +480,7 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = rtlLangs.has(currentLang) ? 'rtl' : 'ltr';
             document.title = t('title');
-            setText('.error-code', 'error_code');
-            setText('#ray-prefix', 'ray_prefix');
-            setText('.ip-title', 'ip_title');
-            setText('.error-description', 'error_description');
-            setText('[data-i18n=what_happened]', 'what_happened');
-            setHTML('[data-i18n=what_happened_p1]', 'what_happened_p1');
-            setHTML('[data-i18n=what_happened_p2]', 'what_happened_p2');
-            setText('[data-i18n=what_can_i_do]', 'what_can_i_do');
-            setText('[data-i18n=what_can_i_do_p1]', 'what_can_i_do_p1');
-            setText('[data-i18n=what_can_i_do_p2]', 'what_can_i_do_p2');
-            setHTML('.footer-line-1', 'footer_line1');
-            setHTML('.footer-line-2', 'footer_line2');
+            applyI18nToDom();
             buildLangSelector();
             updateIpSourceLabels();
             if (loadingEl) loadingEl.style.display = 'none';
@@ -493,6 +491,8 @@
             { name: 'IPInfo.io', url: 'https://ipinfo.io/json', extractIp: d => d.ip },
             { name: 'IPify', url: 'https://api.ipify.org?format=json', extractIp: d => d.ip }
         ];
+        const serviceId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
         async function fetchUserIp() {
             const container = document.getElementById('ip-sources');
             container.innerHTML = '';
@@ -500,7 +500,7 @@
                 const el = document.createElement('div');
                 el.className = 'ip-source';
                 el.textContent = `${service.name}${sep()}${t('detecting')}`;
-                el.id = service.name.toLowerCase().replace('.', '');
+                el.id = serviceId(service.name);
                 container.appendChild(el);
             });
             const results = await Promise.allSettled(ipServices.map(async service => {
@@ -520,7 +520,7 @@
                 }
             }));
             results.forEach((result, i) => {
-                const el = document.getElementById(ipServices[i].name.toLowerCase().replace('.', ''));
+                const el = document.getElementById(serviceId(ipServices[i].name));
                 if (result.status === 'fulfilled' && result.value.ip) {
                     el.className = 'ip-source success';
                     el.dataset.ip = result.value.ip;
@@ -535,7 +535,7 @@
             const container = document.getElementById('ip-sources');
             if (!container) return;
             ipServices.forEach(service => {
-                const id = service.name.toLowerCase().replace('.', '');
+                const id = serviceId(service.name);
                 const el = document.getElementById(id);
                 if (!el) return;
                 if (el.classList.contains('success')) {
@@ -551,11 +551,11 @@
         function generateRayId() {
             const now = Date.now();
             const hex = now.toString(16);
-            const rand = Math.random().toString(16).substr(2, 8);
-            return `${hex}${rand}`.substr(0, 16);
+            const rand = Math.random().toString(16).slice(2, 10);
+            return `${hex}${rand}`.slice(0, 16);
         }
         function formatTime() {
-            return new Date().toISOString().replace('T', ' ').substr(0, 19) + ' UTC';
+            return new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
         }
         document.addEventListener('click', e => {
             if (e.target.id === 'ray-id') {
