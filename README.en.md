@@ -335,8 +335,7 @@ Edit `index.html` directly:
 .
 ├─ index.html           # main page (inline CSS/JS, lazy-loads language JSON)
 ├─ assets/
-│  └─ i18n/             # JSON language packs by code
-│     ├─ en.json
+│  └─ i18n/             # JSON language packs by code (no en — English is embedded baseline)
 │     ├─ zh.json
 │     ├─ es.json  …
 │     └─ (more languages)
