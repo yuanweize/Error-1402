@@ -1,0 +1,19 @@
+{
+  "title": "Virhe 1402 - EURUN CDN",
+  "error_code": "Virhe 1402",
+  "ray_prefix": "Ray-tunnus:",
+  "error_description": "Tapahtui odottamaton virhe. Sinulla ei ehkä ole oikeuksia käyttää tätä sivua.",
+  "ip_title": "IP-osoitteesi",
+  "detecting": "Tunnistetaan...",
+  "what_happened": "Mitä tapahtui?",
+  "what_happened_p1": "Pyysit sivua verkkosivustolta, joka on <strong>EURUN CDN -verkossa</strong>. Palvelimella on käyttörajoituksia, eikä sinulla ehkä ole oikeuksia käyttää tätä sivua.",
+  "what_happened_p2": "Tämä voi johtua <strong>EURUN CDN -verkossa</strong> olevista tietoturvakäytännöistä, maantieteellisistä rajoituksista tai palvelimen määritysongelmista.",
+  "what_can_i_do": "Mitä voin tehdä?",
+  "what_can_i_do_p1": "Jos olet vierailija, yritä uudelleen muutaman minuutin kuluttua.",
+  "what_can_i_do_p2": "Jos olet sivuston omistaja, tarkista DNS- ja tietoturva-asetuksesi.",
+  "footer_line1": "Suorituskyky ja turvallisuus: <strong>EURUN CDN</strong> • Käyttää <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praha, Tšekki • Yhteys: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Epäonnistui",
+  "copied": "Kopioitu!",
+  "sep": ": "
+}

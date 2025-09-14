@@ -1,0 +1,19 @@
+{
+  "title": "Kesalahan 1402 - EURUN CDN",
+  "error_code": "Kesalahan 1402",
+  "ray_prefix": "ID Ray:",
+  "error_description": "Terjadi kesalahan tak terduga. Anda mungkin tidak memiliki izin untuk mengakses halaman ini.",
+  "ip_title": "Alamat IP Anda",
+  "detecting": "Mendeteksi...",
+  "what_happened": "Apa yang terjadi?",
+  "what_happened_p1": "Anda meminta sebuah halaman di situs web yang berada di <strong>jaringan EURUN CDN</strong>. Host memiliki pembatasan akses dan Anda mungkin tidak memiliki izin untuk mengakses halaman ini.",
+  "what_happened_p2": "Hal ini dapat disebabkan oleh kebijakan keamanan, pembatasan geografis, atau masalah konfigurasi server di <strong>jaringan EURUN CDN</strong>.",
+  "what_can_i_do": "Apa yang bisa saya lakukan?",
+  "what_can_i_do_p1": "Jika Anda adalah pengunjung, coba lagi dalam beberapa menit.",
+  "what_can_i_do_p2": "Jika Anda adalah pemilik situs, periksa pengaturan DNS dan keamanan Anda.",
+  "footer_line1": "Kinerja dan keamanan oleh <strong>EURUN CDN</strong> • Dioperasikan oleh <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praha, Republik Ceko • Kontak: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Gagal",
+  "copied": "Disalin!",
+  "sep": ": "
+}

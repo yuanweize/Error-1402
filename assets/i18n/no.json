@@ -1,0 +1,19 @@
+{
+  "title": "Feil 1402 - EURUN CDN",
+  "error_code": "Feil 1402",
+  "ray_prefix": "Ray-ID:",
+  "error_description": "En uventet feil oppstod. Du har kanskje ikke tillatelse til å få tilgang til denne siden.",
+  "ip_title": "Din IP-adresse",
+  "detecting": "Oppdager...",
+  "what_happened": "Hva skjedde?",
+  "what_happened_p1": "Du ba om en side på et nettsted som er på <strong>EURUN CDN-nettverket</strong>. Verten har tilgangsbegrensninger, og du har kanskje ikke tillatelse til å få tilgang til denne siden.",
+  "what_happened_p2": "Dette kan skyldes sikkerhetspolicyer, geografiske begrensninger eller problemer med serverkonfigurasjonen på <strong>EURUN CDN-nettverket</strong>.",
+  "what_can_i_do": "Hva kan jeg gjøre?",
+  "what_can_i_do_p1": "Hvis du er en besøkende, prøv igjen om noen minutter.",
+  "what_can_i_do_p2": "Hvis du er nettstedseier, kontroller DNS- og sikkerhetsinnstillingene dine.",
+  "footer_line1": "Ytelse og sikkerhet av <strong>EURUN CDN</strong> • Drevet av <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praha, Tsjekkia • Kontakt: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Feil",
+  "copied": "Kopiert!",
+  "sep": ": "
+}

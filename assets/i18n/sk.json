@@ -1,0 +1,19 @@
+{
+  "title": "Chyba 1402 - EURUN CDN",
+  "error_code": "Chyba 1402",
+  "ray_prefix": "ID Ray:",
+  "error_description": "Vyskytla sa neočakávaná chyba. Možno nemáte povolenie na prístup k tejto stránke.",
+  "ip_title": "Vaša IP adresa",
+  "detecting": "Detekuje sa...",
+  "what_happened": "Čo sa stalo?",
+  "what_happened_p1": "Požiadali ste o stránku na webovej stránke, ktorá sa nachádza v <strong>sieti EURUN CDN</strong>. Hostiteľ má obmedzenia prístupu a možno nemáte povolenie na prístup k tejto stránke.",
+  "what_happened_p2": "Môže to byť spôsobené bezpečnostnými zásadami, geografickými obmedzeniami alebo problémami s konfiguráciou servera v <strong>sieti EURUN CDN</strong>.",
+  "what_can_i_do": "Čo môžem urobiť?",
+  "what_can_i_do_p1": "Ak ste návštevník, skúste to znova o niekoľko minút.",
+  "what_can_i_do_p2": "Ak ste vlastník webu, skontrolujte svoje nastavenia DNS a zabezpečenia.",
+  "footer_line1": "Výkon a bezpečnosť od <strong>EURUN CDN</strong> • Prevádzkuje <strong>HKTSE s.r.o.</strong>",
+  "footer_line2": "Holandská 49/4, 10100 Praha, Česko • Kontakt: <a href=\"mailto:info@hktse.eu.org\">info@hktse.eu.org</a>",
+  "ip_source_failed": "Zlyhalo",
+  "copied": "Skopírované!",
+  "sep": ": "
+}

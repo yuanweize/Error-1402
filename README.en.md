@@ -255,23 +255,40 @@ Edit `index.html` directly:
   - Responsive tweaks in `@media (max-width:768px)`.
 
 
-### Language switch (EN/ZH)
+### Languages and lazy-loaded i18n
 
-- Language selector on the top-right supports English and Chinese.
-- Default language selection:
-  - Use `localStorage.lang` if set;
-  - Otherwise, detect from `navigator.language` (Chinese if starts with `zh`, else English).
-- Translatable keys are defined in the inlined `i18n` object:
+- The top-right selector now offers 30+ common languages. Language packs are lazy-loaded from external JSON files: `assets/i18n/<code>.json`.
+- Auto-detection priority:
+  1. `localStorage.lang` (if set)
+  2. Exact match against browser languages (e.g., `pt-BR`, `en-GB`)
+  3. Base prefix match (e.g., `pt-BR` → `pt`)
+  4. Fallback to `en`
+- Loading and fallback chain: content is merged from “exact → base → English” so missing keys gracefully fall back to upper levels.
+- Built-in languages (code → native name, partial list):
+  - `en` English, `zh` 中文, `es` Español, `fr` Français, `de` Deutsch, `ja` 日本語, `ko` 한국어, `ru` Русский, `ar` العربية, `pt` Português, `it` Italiano, `nl` Nederlands, `sv` Svenska, `no` Norsk, `pl` Polski, `tr` Türkçe, `hi` हिन्दी, `th` ไทย, `vi` Tiếng Việt, `id` Bahasa Indonesia, `he` עברית, `uk` Українська, `cs` Čeština, `ro` Română, `el` Ελληνικά, `hu` Magyar, `da` Dansk, `fi` Suomi, `bg` Български, `sk` Slovenčina, `ca` Català, `ms` Bahasa Melayu, `fil` Filipino.
+- RTL support: selecting `ar` or `he` sets `dir="rtl"`; others use `ltr`.
+- Translatable keys include:
   - `title`, `error_code`, `ray_prefix`, `error_description`
   - `ip_title`, `detecting`, `ip_source_failed`, `copied`
   - `what_happened`, `what_happened_p1`, `what_happened_p2`
   - `what_can_i_do`, `what_can_i_do_p1`, `what_can_i_do_p2`
-  - `footer_line1`, `footer_line2`, `lang_en`, `lang_zh`, `sep`
-- To add a new language:
-  1. Add a language object (e.g., `jp`) in `i18n` and fill the keys above.
-  2. Add an `<option>` to the selector for the new language.
-  3. Provide a proper `sep` (e.g., `：` for CJK) if needed.
-  4. For new paragraphs/modules, add `data-i18n="key"` to elements and define the key in the dictionary.
+  - `footer_line1`, `footer_line2`, `sep`
+
+#### What is “lazy-loading” here?
+
+- To reduce initial JS payload, the page fetches `assets/i18n/<code>.json` only when needed and caches it in memory.
+- If a language file is missing or fails to load, the merge fallback ensures content remains available using English/base strings.
+- Deployment notes:
+  - Due to browser security, opening via `file://` may block `fetch()` for JSON. Serve over a local HTTP server during development.
+  - Consider caching headers for `assets/i18n/*.json`: `Cache-Control: public, max-age=86400, immutable` to avoid repeated downloads.
+  - For new RTL languages, add the code to the `rtlLangs` set in the script.
+
+#### Adding a new language
+
+1. Copy `assets/i18n/en.json` to `assets/i18n/<code>.json` and translate all keys.
+2. Add `<code>: 'Native Name'` to `languageMeta` in `index.html` so it appears in the selector.
+3. If needed, set a custom `"sep"` in the JSON (e.g., `：`).
+4. For new UI sections, add `data-i18n="key"` to elements and provide keys in each language JSON.
 
 
 ## Privacy & compliance
@@ -307,8 +324,15 @@ Edit `index.html` directly:
 
 ```
 .
-├─ index.html   # main page (inline CSS/JS)
-└─ README.md    # project intro (Chinese) — see also README.en.md
+├─ index.html           # main page (inline CSS/JS, lazy-loads language JSON)
+├─ assets/
+│  └─ i18n/             # JSON language packs by code
+│     ├─ en.json
+│     ├─ zh.json
+│     ├─ es.json  …
+│     └─ (more languages)
+├─ README.md            # project intro (Chinese)
+└─ README.en.md         # project intro (English)
 ```
 
 
