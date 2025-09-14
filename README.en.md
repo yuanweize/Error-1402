@@ -257,7 +257,7 @@ Edit `index.html` directly:
 
 ### Languages and lazy-loaded i18n
 
-- The top-right selector now offers 30+ common languages. Language packs are lazy-loaded from external JSON files: `assets/i18n/<code>.json`.
+- The top-right selector now offers 30+ common languages. Language packs are lazy-loaded from remote JSON files.
 - Auto-detection priority:
   1. User-pinned language (`localStorage.lang` honored only when `localStorage.langPinned=1`, to avoid accidental lock-in)
   2. Iterate your browser language list in order; for each tag try exact first, then its base prefix (e.g., `zh-CN` → `zh`), then move to the next tag
@@ -274,9 +274,22 @@ Edit `index.html` directly:
   - `what_can_i_do`, `what_can_i_do_p1`, `what_can_i_do_p2`
   - `footer_line1`, `footer_line2`, `sep`
 
+#### Remote loading and caching (important)
+
+- Remote sources (fallback in order):
+  - GitHub Raw: `https://raw.githubusercontent.com/yuanweize/Error-1402/main/assets/i18n/<code>.json`
+  - jsDelivr: `https://cdn.jsdelivr.net/gh/yuanweize/Error-1402@main/assets/i18n/<code>.json`
+- Single-file deploy: non-English packs are fetched remotely, so you can deploy just `index.html` without bundling `assets/`.
+- Caching strategy:
+  - In-memory cache (per page) + localStorage persistent cache (TTL 7 days). Expired entries auto-refresh.
+  - Bump script constant `I18N_LS_VERSION` to invalidate old caches.
+  - Manual clear: `localStorage.removeItem('i18n:<code>:v1')`.
+- Loading indicator: a small `Loading…` label is shown in the top-right during fetch.
+- Custom mirrors: edit script constant `LANG_BASES` to replace/add sources (evaluated in order).
+
 #### What is “lazy-loading” here?
 
-- To reduce initial JS payload, the page fetches `assets/i18n/<code>.json` only when needed and caches it in memory.
+- To reduce initial JS payload, the page fetches `<code>.json` remotely only when needed and caches it in memory.
 - If a language file is missing or fails to load, the merge fallback keeps the page usable by falling back to the built-in English baseline.
 - Deployment notes:
   - Due to browser security, opening via `file://` may block `fetch()` for JSON. Serve over a local HTTP server during development.
@@ -333,9 +346,9 @@ Edit `index.html` directly:
 
 ```
 .
-├─ index.html           # main page (inline CSS/JS, lazy-loads language JSON)
+├─ index.html           # main page (inline CSS/JS, remote lazy-loading of language JSON; can deploy as single file)
 ├─ assets/
-│  └─ i18n/             # JSON language packs by code (no en — English is embedded baseline)
+│  └─ i18n/             # source language packs (for repo/CI only; optional for production deploy)
 │     ├─ zh.json
 │     ├─ es.json  …
 │     └─ (more languages)
