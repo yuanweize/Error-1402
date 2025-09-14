@@ -1,1 +1,284 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Error 1402 - EURUN CDN</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;color:#404040;line-height:1.5;min-height:100vh;background:#f8f9fa;-webkit-font-smoothing:antialiased}.c{max-width:60rem;margin:0 auto;padding:0 2rem}.h{margin-bottom:2rem;padding:1.5rem 0}.et{display:flex;align-items:baseline;gap:2rem;margin-bottom:1rem}.ec{font-size:4.5rem;font-weight:200;color:#404040;margin:0;letter-spacing:-.02em}.ri{font-family:monaco,courier,monospace;font-size:.9rem;color:#999;font-weight:400;margin-top:.5rem;letter-spacing:.025em}#r{cursor:pointer;transition:color .2s}#r:hover{color:#0051c3}.ed{font-size:1.125rem;color:#666;font-weight:400;margin:0;line-height:1.6;max-width:600px;opacity:.9}.ct{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem}.s h2{font-size:1.875rem;font-weight:400;color:#404040;margin-bottom:1rem}.s p{font-size:.95rem;line-height:1.5;color:#6b7280;margin-bottom:.75rem}.s strong{font-weight:600;color:#404040}.is{background:#fff;border-radius:.5rem;padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:2rem}.ih{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}.ii{width:1.25rem;height:1.25rem;background:#0051c3;border-radius:.25rem;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem}.it{font-weight:600;color:#404040}.x{display:flex;gap:.5rem;flex-wrap:wrap}.p{background:#f8f9fa;border:1px solid #e9ecef;border-radius:.25rem;padding:.5rem .75rem;font-size:.75rem;font-weight:600;transition:all .2s}.p.ok{background:#d4edda;border-color:#c3e6cb;color:#155724}.p.er{background:#f8d7da;border-color:#f5c6cb;color:#721c24}.f{text-align:center;color:#999;font-size:.8125rem;border-top:1px solid #e9ecef;padding-top:2rem;margin-top:2rem}.fl{margin-bottom:.5rem}.f strong{color:#404040;font-weight:600}.f a{color:#0051c3;text-decoration:none;transition:color .15s ease}.f a:hover{color:#ee730a}.l{display:inline-block;width:.75rem;height:.75rem;border:2px solid #e9ecef;border-top:2px solid #0051c3;border-radius:50%;animation:spin 1s linear infinite;margin-right:.5rem}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@media (max-width:768px){.ec{font-size:3.5rem}.et{flex-direction:column;align-items:flex-start;gap:.5rem}.ri{margin-top:0}.ct{grid-template-columns:1fr;gap:2rem}.c{padding:0 1rem}}</style></head><body><div class="c"><div class="h"><div class="et"><h1 class="ec">Error 1402</h1><div class="ri">Ray ID: <span id="r"></span> • <span id="t"></span></div></div><h2 class="ed">An unexpected error occurred. You may not have the necessary permissions to access this page.</h2></div><div class="is"><div class="ih"><div class="ii">🌐</div><div class="it">Your IP Address</div></div><div class="x" id="i"><div class="p"><span class="l"></span>Detecting...</div></div></div><div class="ct"><div class="s"><h2>What happened?</h2><p>You've requested a page on a website that is on the <strong>EURUN CDN network</strong>. The host is configured with access restrictions, and you may not have the necessary permissions to access this page.</p><p>This could be due to security policies, geographic restrictions, or server configuration issues on the <strong>EURUN CDN</strong> network.</p></div><div class="s"><h2>What can I do?</h2><p>If you are a visitor of this website, please try again in a few minutes.</p><p>If you are the owner of this website, check your DNS settings and security configurations.</p></div></div><div class="f"><div class="fl">Performance & security by <strong>EURUN CDN</strong> • Operated by <strong>HKTSE s.r.o.</strong></div><div class="fl">Holandská 49/4, 10100 Praha, Czech Republic • Contact: <a href="mailto:info@hktse.eu.org">info@hktse.eu.org</a></div></div></div><script>const S=[{n:'IPIP.net',u:'https://myip.ipip.net/json',x:d=>d.data?.ip},{n:'IPInfo.io',u:'https://ipinfo.io/json',x:d=>d.ip},{n:'IPify',u:'https://api.ipify.org?format=json',x:d=>d.ip}];async function f(){const c=document.getElementById('i');c.innerHTML='';S.forEach(s=>{const e=document.createElement('div');e.className='p';e.textContent=s.n+': Detecting...';e.id=s.n.toLowerCase().replace('.','');c.appendChild(e)});const r=await Promise.allSettled(S.map(async s=>{try{const a=new AbortController(),t=setTimeout(()=>a.abort(),3e3),res=await fetch(s.u,{signal:a.signal});clearTimeout(t);const d=await res.json(),ip=s.x(d);if(ip&&/^(\d{1,3}\.){3}\d{1,3}$/.test(ip))return{n:s.n,ip};throw 0}catch(e){return{n:s.n,er:1}}}));r.forEach((v,i)=>{const e=document.getElementById(S[i].n.toLowerCase().replace('.',''));if(v.status==='fulfilled'&&v.value.ip){e.className='p ok';e.textContent=S[i].n+': '+v.value.ip}else{e.className='p er';e.textContent=S[i].n+': Failed'}})}function g(){const h=Date.now().toString(16),r=Math.random().toString(16).slice(2,10);return(h+r).slice(0,16)}function T(){return new Date().toISOString().replace('T',' ').slice(0,19)+' UTC'}document.addEventListener('click',e=>{if(e.target.id==='r'){navigator.clipboard&&navigator.clipboard.writeText(e.target.textContent).then(()=>{const o=e.target.textContent;e.target.textContent='Copied!';e.target.style.color='#28a745';setTimeout(()=>{e.target.textContent=o;e.target.style.color=''},1e3)})}});document.getElementById('r').textContent=g();document.getElementById('t').textContent=T();f();</script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Error 1402 - EURUN CDN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif;
+            color: #404040;
+            line-height: 1.5;
+            min-height: 100vh;
+            background: #f8f9fa;
+            -webkit-font-smoothing: antialiased
+        }
+
+        .c {
+            max-width: 60rem;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        .h {
+            margin-bottom: 2rem;
+            padding: 1.5rem 0
+        }
+
+        .et {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            margin-bottom: 1rem
+        }
+
+        .ec {
+            font-size: 4.5rem;
+            font-weight: 200;
+            color: #404040;
+            margin: 0;
+            letter-spacing: -.02em
+        }
+
+        .ri {
+            font-family: monaco, courier, monospace;
+            font-size: .9rem;
+            color: #999;
+            font-weight: 400;
+            margin-top: .5rem;
+            letter-spacing: .025em
+        }
+
+        #r {
+            cursor: pointer;
+            transition: color .2s
+        }
+
+        #r:hover {
+            color: #0051c3
+        }
+
+        .ed {
+            font-size: 1.125rem;
+            color: #666;
+            font-weight: 400;
+            margin: 0;
+            line-height: 1.6;
+            max-width: 600px;
+            opacity: .9
+        }
+
+        .ct {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem
+        }
+
+        .s h2 {
+            font-size: 1.875rem;
+            font-weight: 400;
+            color: #404040;
+            margin-bottom: 1rem
+        }
+
+        .s p {
+            font-size: .95rem;
+            line-height: 1.5;
+            color: #6b7280;
+            margin-bottom: .75rem
+        }
+
+        .s strong {
+            font-weight: 600;
+            color: #404040
+        }
+
+        .is {
+            background: #fff;
+            border-radius: .5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+            margin-bottom: 2rem
+        }
+
+        .ih {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            margin-bottom: 1rem
+        }
+
+        .ii {
+            width: 1.25rem;
+            height: 1.25rem;
+            background: #0051c3;
+            border-radius: .25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .75rem
+        }
+
+        .it {
+            font-weight: 600;
+            color: #404040
+        }
+
+        .x {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap
+        }
+
+        .p {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: .25rem;
+            padding: .5rem .75rem;
+            font-size: .75rem;
+            font-weight: 600;
+            transition: all .2s
+        }
+
+        .p.ok {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724
+        }
+
+        .p.er {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24
+        }
+
+        .f {
+            text-align: center;
+            color: #999;
+            font-size: .8125rem;
+            border-top: 1px solid #e9ecef;
+            padding-top: 2rem;
+            margin-top: 2rem
+        }
+
+        .fl {
+            margin-bottom: .5rem
+        }
+
+        .f strong {
+            color: #404040;
+            font-weight: 600
+        }
+
+        .f a {
+            color: #0051c3;
+            text-decoration: none;
+            transition: color .15s ease
+        }
+
+        .f a:hover {
+            color: #ee730a
+        }
+
+        .l {
+            display: inline-block;
+            width: .75rem;
+            height: .75rem;
+            border: 2px solid #e9ecef;
+            border-top: 2px solid #0051c3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: .5rem
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @media (max-width:768px) {
+            .ec {
+                font-size: 3.5rem
+            }
+
+            .et {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: .5rem
+            }
+
+            .ri {
+                margin-top: 0
+            }
+
+            .ct {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+
+            .c {
+                padding: 0 1rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c">
+        <div class="h">
+            <div class="et">
+                <h1 class="ec">Error 1402</h1>
+                <div class="ri">Ray ID: <span id="r"></span> • <span id="t"></span></div>
+            </div>
+            <h2 class="ed">An unexpected error occurred. You may not have the necessary permissions to access this page.
+            </h2>
+        </div>
+        <div class="is">
+            <div class="ih">
+                <div class="ii">🌐</div>
+                <div class="it">Your IP Address</div>
+            </div>
+            <div class="x" id="i">
+                <div class="p"><span class="l"></span>Detecting...</div>
+            </div>
+        </div>
+        <div class="ct">
+            <div class="s">
+                <h2>What happened?</h2>
+                <p>You've requested a page on a website that is on the <strong>EURUN CDN network</strong>. The host is
+                    configured with access restrictions, and you may not have the necessary permissions to access this
+                    page.</p>
+                <p>This could be due to security policies, geographic restrictions, or server configuration issues on
+                    the <strong>EURUN CDN</strong> network.</p>
+            </div>
+            <div class="s">
+                <h2>What can I do?</h2>
+                <p>If you are a visitor of this website, please try again in a few minutes.</p>
+                <p>If you are the owner of this website, check your DNS settings and security configurations.</p>
+            </div>
+        </div>
+        <div class="f">
+            <div class="fl">Performance & security by <strong>EURUN CDN</strong> • Operated by <strong>HKTSE
+                    s.r.o.</strong></div>
+            <div class="fl">Holandská 49/4, 10100 Praha, Czech Republic • Contact: <a
+                    href="mailto:info@hktse.eu.org">info@hktse.eu.org</a></div>
+        </div>
+    </div>
+    <script>const S = [{ n: 'IPIP.net', u: 'https://myip.ipip.net/json', x: d => d.data?.ip }, { n: 'IPInfo.io', u: 'https://ipinfo.io/json', x: d => d.ip }, { n: 'IPify', u: 'https://api.ipify.org?format=json', x: d => d.ip }]; async function f() { const c = document.getElementById('i'); c.innerHTML = ''; S.forEach(s => { const e = document.createElement('div'); e.className = 'p'; e.textContent = s.n + ': Detecting...'; e.id = s.n.toLowerCase().replace('.', ''); c.appendChild(e) }); const r = await Promise.allSettled(S.map(async s => { try { const a = new AbortController(), t = setTimeout(() => a.abort(), 3e3), res = await fetch(s.u, { signal: a.signal }); clearTimeout(t); const d = await res.json(), ip = s.x(d); if (ip && /^(\d{1,3}\.){3}\d{1,3}$/.test(ip)) return { n: s.n, ip }; throw 0 } catch (e) { return { n: s.n, er: 1 } } })); r.forEach((v, i) => { const e = document.getElementById(S[i].n.toLowerCase().replace('.', '')); if (v.status === 'fulfilled' && v.value.ip) { e.className = 'p ok'; e.textContent = S[i].n + ': ' + v.value.ip } else { e.className = 'p er'; e.textContent = S[i].n + ': Failed' } }) } function g() { const h = Date.now().toString(16), r = Math.random().toString(16).slice(2, 10); return (h + r).slice(0, 16) } function T() { return new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC' } document.addEventListener('click', e => { if (e.target.id === 'r') { navigator.clipboard && navigator.clipboard.writeText(e.target.textContent).then(() => { const o = e.target.textContent; e.target.textContent = 'Copied!'; e.target.style.color = '#28a745'; setTimeout(() => { e.target.textContent = o; e.target.style.color = '' }, 1e3) }) } }); document.getElementById('r').textContent = g(); document.getElementById('t').textContent = T(); f();</script>
+</body>
+
+</html>
