@@ -366,11 +366,6 @@ Edit `index.html` directly:
   - Removing external IP checks to reduce first paint requests.
 
 
-## License
-
-No license file is included yet. If you plan to open source it, add an explicit license (e.g., MIT/Apache-2.0). Until then, be cautious with redistribution and commercial use.
-
-
 ## Credits
 
 - Layout and copy inspired by common CDN error pages;
