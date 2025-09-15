@@ -45,6 +45,21 @@ Recommended scenarios:
 > Tip: For obfuscation, the page title/copy shows "Error 1402", while your server can still return common status codes (e.g., 403/404/503). The look and feel is preserved.
 
 
+### One-click deploy
+
+Use these buttons to clone from this repo and deploy in one go:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yuanweize/Error-1402&project-name=error-1402&repository-name=Error-1402)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yuanweize/Error-1402)
+[![Deploy to Cloudflare Pages](https://img.shields.io/badge/Deploy%20to-Cloudflare%20Pages-F38020?logo=Cloudflare&logoColor=white)](https://dash.cloudflare.com/?to=/:account/pages/create)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/Error-1402)
+
+Notes:
+- Vercel/Netlify/Render build and host static sites directly from GitHub;
+- Cloudflare Pages button opens the Pages creation flow where you connect your GitHub repo;
+- For “single-file deploy”, you can also just upload `index.html` to these providers.
+
+
 ## Reverse proxy/Nginx idea (pseudo)
 
 - Put `index.html` in a readable directory;

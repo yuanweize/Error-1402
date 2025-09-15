@@ -45,6 +45,21 @@ English
 > 小贴士：出于迷惑性考虑，页面标题/文案展示为“Error 1402”，但你仍可让服务器返回 403/404/503 等常见状态码，不影响展示效果。
 
 
+### 一键托管部署
+
+如下按钮可一键从本仓库创建并托管你的站点（可保留默认设置直接部署）：
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yuanweize/Error-1402&project-name=error-1402&repository-name=Error-1402)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yuanweize/Error-1402)
+[![Deploy to Cloudflare Pages](https://img.shields.io/badge/Deploy%20to-Cloudflare%20Pages-F38020?logo=Cloudflare&logoColor=white)](https://dash.cloudflare.com/?to=/:account/pages/create)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yuanweize/Error-1402)
+
+提示：
+- Vercel/Netlify/Render 会直接从 GitHub 仓库构建并托管静态页；
+- Cloudflare Pages 入口会引导你连接 GitHub 账号并选择仓库完成部署；
+- 若用于“单文件部署”，也可只上传 `index.html` 到以上平台的静态托管。
+
+
 ## 在反向代理/Nginx 中的思路示例（伪代码）
 
 - 将 `index.html` 放到一个可读目录；
@@ -238,6 +253,79 @@ example.com {
 ```
 
 > 提示：上面示例均未包含 TLS。若用于生产环境，请配合 HTTPS、HSTS、缓存策略与访问控制等进行完善配置。
+
+
+## 引用远程错误页（将 403 重定向到错误域）
+
+适用场景
+- 不在业务服务器上部署静态错误页，只统一跳转到你的错误域（例如托管在 Vercel 的 Error-1402 单页）。
+- 多站点统一维护一处页面内容；原请求路径可选择保留。
+
+注意
+- 这是重定向（302/307），客户端最终看到的是错误域的 200 页面；若需保留原状态码，请改用本仓库前文的“错误页映射（本地渲染）”方案。
+
+### Nginx（示例：把 403 映射为跳转到错误域，保留原路径）
+
+```nginx
+# 1) 只允许 CDN 回源 IP + 本机（举例）
+include /www/server/panel/vhost/nginx/cdnip/*.conf;
+
+# 2) 把 403 映射为重定向（把 deny 引起的 403 改为跳转）
+error_page 403 = @to_error;
+location @to_error {
+    # 使用 302 临时跳转到错误域（保留原请求路径）
+    return 302 https://error-1402.vercel.app$request_uri;
+}
+```
+
+可选：若希望缓存友好可用 307；若不保留路径，去掉 `$request_uri` 即可。
+
+### Apache httpd
+
+- 简单版（不保留原路径，最简配置）
+```apache
+ErrorDocument 403 https://error-1402.vercel.app
+```
+
+- 保留原路径（推荐，需启用 mod_rewrite）
+  - 在主机/虚拟主机配置中（server/vhost 上下文）：
+```apache
+ErrorDocument 403 /__to_error
+RewriteEngine On
+RewriteRule ^/__to_error$ https://error-1402.vercel.app%{ENV:REDIRECT_URL} [R=302,L,NE]
+```
+  - 若在 .htaccess 中使用，去掉匹配前缀的斜杠：
+```apache
+ErrorDocument 403 /__to_error
+RewriteEngine On
+RewriteRule ^__to_error$ https://error-1402.vercel.app%{ENV:REDIRECT_URL} [R=302,L,NE]
+```
+说明：当触发 403 时，Apache 会内部重定向到 ErrorDocument 指定路径，并设置 `REDIRECT_URL` 为原始路径。
+
+### Caddy v2
+
+```caddy
+handle_errors {
+    @is403 expression {http.error.status_code} == 403
+    redir @is403 https://error-1402.vercel.app{uri} 302
+}
+```
+
+### IIS (web.config)
+
+- 简单版（不保留原路径）：
+```xml
+<configuration>
+  <system.webServer>
+    <httpErrors>
+      <remove statusCode="403" />
+      <error statusCode="403" responseMode="Redirect"
+             path="https://error-1402.vercel.app" />
+    </httpErrors>
+  </system.webServer>
+</configuration>
+```
+注：IIS 的 httpErrors 对外部 URL 通常不支持变量插值；若需保留路径，可在应用层实现 403 前置判断后做 302 到 `https://error-1402.vercel.app{REQUEST_URI}`。
 
 
 ## 自定义与二次开发
