@@ -47,7 +47,6 @@ Recommended scenarios:
 ### Template static page (JS 302 redirect, cleanest)
 
 Save the following as `error-1402-redirect.html` (or use it as your `index.html`):
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +65,6 @@ Save the following as `error-1402-redirect.html` (or use it as your `index.html`
 ```
 
 Minimalist HTML with the smallest file size, ideal for use directly as an Nginx error page
-
 ```html
 <!DOCTYPE html>
 <meta charset="UTF-8">

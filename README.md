@@ -47,7 +47,6 @@ English
 ### 模板静态页面（JS 302 重定向，最简洁）
 
 将下列文件保存为 `error-1402-redirect.html`（或作为站点 `index.html`）：
-
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -66,7 +65,6 @@ English
 ```
 
 极简HTML，文件体积最小，适合直接用作 Nginx 错误页
-
 ```html
 <!DOCTYPE html>
 <meta charset="UTF-8">
