@@ -44,6 +44,28 @@ English
 
 > 小贴士：出于迷惑性考虑，页面标题/文案展示为“Error 1402”，但你仍可让服务器返回 403/404/503 等常见状态码，不影响展示效果。
 
+### 模板静态页面（立即跳转到远程错误域）
+
+如需在任意站点快速“挂一个跳转到错误域的落地页”，可直接使用本仓库提供的模板文件 `error-1402-redirect.html`（已内置 0 秒刷新到 `https://error-1402.vercel.app/`）：
+
+```
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Error 1402 - EURUN CDN</title>
+  <meta http-equiv="refresh" content="0;url=https://error-1402.vercel.app/">
+</head>
+<body>
+</body>
+</html>
+```
+
+使用方式：
+- 将该文件（或上面的代码）放入你的站点目录（例如命名为 `error-1402.html` 或作为默认 `index.html`）；
+- 访问该文件时将立即重定向到远程错误域；
+- 如需跳转到你自定义的错误域，修改 `content="0;url=..."` 即可。
+
 
 ### 一键托管部署
 

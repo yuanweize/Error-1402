@@ -44,6 +44,28 @@ Recommended scenarios:
 
 > Tip: For obfuscation, the page title/copy shows "Error 1402", while your server can still return common status codes (e.g., 403/404/503). The look and feel is preserved.
 
+### Template static page (instant redirect to remote error domain)
+
+If you want a quick landing page that immediately redirects to your error domain, use the provided `error-1402-redirect.html` (0s meta-refresh to `https://error-1402.vercel.app/`):
+
+```
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Error 1402 - EURUN CDN</title>
+  <meta http-equiv="refresh" content="0;url=https://error-1402.vercel.app/">
+</head>
+<body>
+</body>
+</html>
+```
+
+How to use:
+- Place this file (or the snippet above) in your site (e.g., `error-1402.html` or as default `index.html`);
+- Visiting it immediately redirects to the remote error domain;
+- To use your own domain, change the `content="0;url=..."` target.
+
 
 ### One-click deploy
 
