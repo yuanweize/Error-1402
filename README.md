@@ -65,6 +65,20 @@ English
 </html>
 ```
 
+极简HTML，文件体积最小，适合直接用作 Nginx 错误页
+
+```html
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Error 1402</title>
+<script>location.replace('https://error-1402.vercel.app/');</script>
+```
+
+特点：
+没有 <html>、<head>、<body> 标签也能正常跳转（现代浏览器自动补全）。
+文件体积最小，只有 127 字节。
+打开页面立即跳转，无任何显示内容。
+
 可选：如需保留原路径与查询参数（可能泄露敏感 query，请谨慎）：
 ```html
 <script>

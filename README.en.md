@@ -65,7 +65,21 @@ Save the following as `error-1402-redirect.html` (or use it as your `index.html`
 </html>
 ```
 
+Minimalist HTML with the smallest file size, ideal for use directly as an Nginx error page
+
+```html
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Error 1402</title>
+<script>location.replace('https://error-1402.vercel.app/');</script>
+```
+
+Features:
+- Works without <html>, <head>, or <body> tags thanks to automatic completion by modern browsers.
+- The file size is minimal, only 127 bytes.
+- Instantly redirects upon opening the page, with no visible content displayed.
 Optional: preserve original path/query (may expose sensitive params; use with care):
+
 ```html
 <script>
   location.replace('https://error-1402.vercel.app' + location.pathname + location.search + location.hash);
